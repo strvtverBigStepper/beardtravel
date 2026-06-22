@@ -2,6 +2,8 @@
 <html lang="ru"><head>
 <meta charset="utf-8">
 <title>beard.travel — Тур выходного дня в Тверской области — 3 дня тишины у воды · 19 000 ₽</title>
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<link rel="apple-touch-icon" href="logo.jpg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Душевный детокс-выезд из мегаполиса: глэмпинг в Тверской области, шведский стол, баня на дровах, сплавы на каяках. 3 дня / 2 ночи · 19 000 ₽. Трансфер от ж/д Тверь.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -791,6 +793,10 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   form.leadform label{font-size:14px;white-space:normal;margin-bottom:8px}
   form.leadform .submit-row{grid-column:span 1;flex-direction:column;align-items:stretch}
   form.leadform button.send{width:100%;justify-content:center;min-height:52px;font-size:16px}
+  .consent{display:flex;align-items:flex-start;gap:10px;width:100%;flex-direction:row;flex-wrap:nowrap}
+  .consent input[type="checkbox"]{flex-shrink:0;margin-top:2px;width:20px;height:20px}
+  .consent span{flex:1;font-size:13px;line-height:1.4;color:rgba(244,238,227,0.85);word-wrap:break-word}
+  .consent a{color:#c9a876;text-decoration:underline}
 }
 @media (max-width:600px){
   .modal-content{padding:24px 20px;max-height:90vh;border-radius:12px}
@@ -800,16 +806,20 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 }
 @media (max-width:480px){
   .hero h1{font-size:clamp(22px,6vw,30px);line-height:1.2;word-wrap:break-word;overflow-wrap:break-word;max-width:100%}
-  .mega-num{font-size:clamp(60px,16vw,80px);white-space:nowrap;max-width:100%}
-  .mega-num .cur{font-size:clamp(16px,4vw,22px)}
-  .mega-disc{gap:8px;padding:0 4px;justify-content:center}
-  .mega-left .mega-pre{font-size:12px}
+  .mega-disc{gap:12px;justify-content:center;align-items:center;width:100%;padding:0 4px}
+  .mega-num{font-size:clamp(110px,32vw,160px);line-height:1;white-space:nowrap;max-width:100%}
+  .mega-num .cur{font-size:clamp(28px,8vw,38px);vertical-align:top;margin-top:0}
+  .mega-left .mega-pre{font-size:clamp(15px,4.5vw,20px)}
+  .mega-left{padding-bottom:0;text-align:right}
+  .mega-num::after{left:15%;right:15%}
   .hero .lead{font-size:14px;line-height:1.5;max-width:100%;padding:0;overflow-wrap:break-word}
   form.leadform input,form.leadform select{width:100%;box-sizing:border-box;padding:14px 16px;font-size:16px}
 }
 .banner-photo{width:100%;max-width:1200px;margin:40px auto;padding:0 16px;box-sizing:border-box}
 .banner-photo img{width:100%;height:auto;max-height:480px;object-fit:cover;border-radius:24px;display:block;box-shadow:0 10px 30px rgba(27,42,54,0.12)}
 @media(max-width:760px){.banner-photo{margin:24px auto}.banner-photo img{max-height:280px;border-radius:16px}}
+.form-sec-photo-mobile{display:none}
+@media(max-width:760px){.form-sec-photo-mobile{display:block;width:100%;margin:24px 0;border-radius:16px;overflow:hidden}.form-sec-photo-mobile img{width:100%;height:auto;max-height:280px;object-fit:cover;display:block;border-radius:16px}}
 .vpn-notice{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(201,168,118,0.15);border:1px solid rgba(201,168,118,0.4);border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.4;color:#2c4a5e}
 .vpn-notice-icon{flex-shrink:0;font-size:16px;line-height:1.2}
 .vpn-notice-text{flex:1}
@@ -1285,6 +1295,24 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <article class="date-card" data-cat="jul">
         <div class="top">
           <div class="month">Июль</div>
+          <div class="range">3–5 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"></circle><circle cx="17" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M10 21a7 7 0 0 1 14 0"></path></svg> Свободны 6 мест</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Начало лета — самая длинная ночь</div>
+          <div class="progress">
+            <div class="pbar"><i style="width:0%"></i></div>
+            <div class="ptext"><span>Занято</span><b>0 / 24 · ранняя бронь</b></div>
+          </div>
+          <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="jul">
+        <div class="top">
+          <div class="month">Июль</div>
           <div class="range">11–13 <small>пт–вс</small></div>
           <div class="corner"><span class="sticker bark" style="padding:5px 10px;font-size:11px">ПОПУЛЯРНЫЙ</span></div>
         </div>
@@ -1303,6 +1331,24 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <article class="date-card" data-cat="jul">
         <div class="top">
           <div class="month">Июль</div>
+          <div class="range">17–19 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"></circle><circle cx="17" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M10 21a7 7 0 0 1 14 0"></path></svg> Свободны 6 мест</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Разгар лета — тёплая вода</div>
+          <div class="progress">
+            <div class="pbar"><i style="width:0%"></i></div>
+            <div class="ptext"><span>Занято</span><b>0 / 24 · ранняя бронь</b></div>
+          </div>
+          <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="jul">
+        <div class="top">
+          <div class="month">Июль</div>
           <div class="range">25–27 <small>пт–вс</small></div>
           <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
         </div>
@@ -1312,6 +1358,24 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
           <div class="progress">
             <div class="pbar"><i style="width:8%"></i></div>
             <div class="ptext"><span>Занято</span><b>2 / 24 · ранняя бронь</b></div>
+          </div>
+          <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="aug">
+        <div class="top">
+          <div class="month">Июль–Август</div>
+          <div class="range">31.07–02 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"></circle><circle cx="17" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M10 21a7 7 0 0 1 14 0"></path></svg> Свободны 6 мест</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Стыковый заезд — июль и август</div>
+          <div class="progress">
+            <div class="pbar"><i style="width:0%"></i></div>
+            <div class="ptext"><span>Занято</span><b>0 / 24 · ранняя бронь</b></div>
           </div>
           <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
           <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
@@ -1339,6 +1403,24 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <article class="date-card" data-cat="aug">
         <div class="top">
           <div class="month">Август</div>
+          <div class="range">14–16 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"></circle><circle cx="17" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M10 21a7 7 0 0 1 14 0"></path></svg> Свободны 6 мест</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Середина августа — тихая вода и звёзды</div>
+          <div class="progress">
+            <div class="pbar"><i style="width:0%"></i></div>
+            <div class="ptext"><span>Занято</span><b>0 / 24 · ранняя бронь</b></div>
+          </div>
+          <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="aug">
+        <div class="top">
+          <div class="month">Август</div>
           <div class="range">22–24 <small>пт–вс</small></div>
           <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
         </div>
@@ -1354,7 +1436,23 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-
+      <article class="date-card" data-cat="aug">
+        <div class="top">
+          <div class="month">Август</div>
+          <div class="range">28–30 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg> Завершающий заезд лета</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Уже не жарко — идеально для бани</div>
+          <div class="progress">
+            <div class="pbar"><i style="width:0%"></i></div>
+            <div class="ptext"><span>Занято</span><b>0 / 24 · ранняя бронь</b></div>
+          </div>
+          <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
+        </div>
+      </article>
 
     </div>
 
@@ -1663,10 +1761,15 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
               <label>Дата заезда</label>
               <select name="date">
                 <option>27–29 июня · 6 мест</option>
+                <option>3–5 июля · 6 мест</option>
                 <option>11–13 июля · 12 мест</option>
+                <option>17–19 июля · 6 мест</option>
                 <option>25–27 июля · 22 места</option>
+                <option>31 июля – 2 августа · 6 мест</option>
                 <option>8–10 августа · 19 мест</option>
+                <option>14–16 августа · 6 мест</option>
                 <option>22–24 августа · 21 место</option>
+                <option>28–30 августа · 6 мест</option>
                 <option>Пока не выбрал(а) — посоветуйте</option>
               </select>
             </div>
@@ -1700,6 +1803,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
                 <input type="checkbox" name="consent" required>
                 <span>Отправляя заявку, я даю согласие на обработку персональных данных и принимаю <a href="#" data-modal="privacy">Политику конфиденциальности</a> и <a href="#" data-modal="pdn">Согласие на обработку ПДн</a></span>
               </label>
+            </div>
+            <div class="form-sec-photo-mobile">
+              <img src="10.jpeg" alt="Глэмпинг на Тверце" loading="lazy">
             </div>
             <div class="alt-call">
               <span>Или напишите прямо сейчас:</span>
