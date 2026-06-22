@@ -77,9 +77,23 @@
 .modal-body p{margin-bottom:12px}
 .modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border:none;background:transparent;font-size:28px;cursor:pointer;color:#1b2a36;line-height:1}
 /* ============ COOKIES BANNER ============ */
-.cookies-banner{position:fixed;bottom:0;left:0;right:0;z-index:8000;background:#1b2a36;color:#f4eee3;padding:16px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;line-height:1.5}
-.cookies-banner span{flex:1;min-width:200px}
-.cookies-banner button{background:#c9a876;color:#1b2a36;border:none;padding:10px 22px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.cookies-banner{position:fixed;left:16px;right:16px;bottom:16px;background:#1b2a36;color:#f4eee3;padding:20px 24px;border-radius:16px;z-index:9998;max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+.cookies-text{flex:1;min-width:280px}
+.cookies-text b{display:block;font-size:16px;margin-bottom:6px}
+.cookies-text span{font-size:13px;line-height:1.5;color:rgba(244,238,227,0.8)}
+.cookies-text a{color:#c9a876;text-decoration:underline}
+.cookies-actions{display:flex;gap:8px;flex-wrap:wrap}
+.cookies-btn{padding:12px 20px;border-radius:50px;border:none;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap}
+.cookies-btn-primary{background:#c9a876;color:#1b2a36}
+.cookies-btn-primary:hover{background:#b8985f}
+.cookies-btn-secondary{background:transparent;color:#f4eee3;border:1px solid rgba(244,238,227,0.4)}
+.cookies-btn-secondary:hover{background:rgba(244,238,227,0.1)}
+.cookies-btn-link{background:transparent;color:#c9a876;text-decoration:underline;padding:12px 8px}
+.cookie-option{display:flex;gap:12px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(27,42,54,0.1);cursor:pointer}
+.cookie-option:last-of-type{border-bottom:none}
+.cookie-option input{margin-top:4px;width:20px;height:20px;flex-shrink:0}
+.cookie-option b{display:block;font-size:15px;margin-bottom:4px;color:#1b2a36}
+.cookie-option span{font-size:13px;color:#6B7886;line-height:1.4}
 /* ============ FOOTER DOCS & EXECUTOR ============ */
 .footer-docs h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
 .footer-docs ul{list-style:none;margin:0;padding:0}
@@ -259,17 +273,8 @@ footer .logo{height:48px}
 .hero-vis .photo-main::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg, rgba(27,42,54,.32) 0%, transparent 26%, transparent 70%, rgba(27,42,54,.28) 100%)}
 .hero-vis .corner{position:absolute;z-index:3;top:18px;left:18px;display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600;background:rgba(31,42,30,.5);padding:7px 13px;border-radius:999px;backdrop-filter:blur(4px)}
 .hero-vis .corner i{width:7px;height:7px;border-radius:50%;background:var(--honey);flex-shrink:0}
-.hero-vis .float-card{
-  position:absolute;left:-26px;bottom:48px;z-index:4;
-  background:#fff;border-radius:var(--r-lg);padding:16px 20px;
-  box-shadow:var(--shadow-lg);border:1px solid var(--line-2);
-  display:flex;align-items:center;gap:14px;max-width:280px;
-}
-.hero-vis .float-card .ic{width:46px;height:46px;border-radius:12px;background:var(--beige);display:grid;place-items:center;color:var(--moss);flex:0 0 46px}
-.hero-vis .float-card b{font-family:var(--fdisp);font-weight:600;font-size:15px;display:block;letter-spacing:-.01em}
-.hero-vis .float-card span{font-size:12px;color:var(--mute);line-height:1.4;display:block;margin-top:2px}
 .hero-vis .price-tag{
-  position:absolute;right:-18px;top:38px;z-index:4;
+  position:absolute;right:-18px;top:80px;z-index:4;
   background:var(--ink);color:#fff;border-radius:var(--r-lg);
   padding:18px 24px;box-shadow:var(--shadow-lg);transform:rotate(3deg);
   border:2px solid var(--honey);text-align:center;
@@ -479,6 +484,13 @@ footer .logo{height:48px}
 .cell p{color:var(--ink-2);font-size:15px;line-height:1.5}
 .cell .ico{width:46px;height:46px;border-radius:12px;background:var(--beige);display:grid;place-items:center;color:var(--moss);margin-bottom:18px}
 .cell.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cell.has-photo{color:#fff;border-color:transparent}
+.cell.has-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,42,54,0.3) 0%,rgba(27,42,54,0.85) 100%);z-index:1}
+.cell.has-photo > *{position:relative;z-index:2}
+.cell.has-photo .ico{background:rgba(255,255,255,0.15);color:#fff}
+.cell.has-photo h3,.cell.has-photo p,.cell.has-photo .bullets li{color:#fff}
+.day-card .day-photo{width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:16px;display:block}
+#about{background:#f4eee3}
 .cell.dark p{color:rgba(248,243,232,.8)}
 .cell.dark .ico{background:rgba(255,255,255,.1);color:var(--sage)}
 .cell.moss{background:var(--moss);color:#fff;border-color:var(--moss)}
@@ -719,11 +731,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   .hero .ctas .btn{justify-content:center}
   .hero-vis{max-width:none}
   .hero-vis .photo-main{aspect-ratio:4/3.2}
-  .hero-vis .float-card{left:8px;bottom:12px;padding:11px 13px;max-width:220px;gap:11px}
-  .hero-vis .float-card .ic{width:38px;height:38px;flex:0 0 38px}
-  .hero-vis .float-card b{font-size:13.5px}
-  .hero-vis .float-card span{font-size:11px}
-  .hero-vis .price-tag{right:8px;top:12px;padding:11px 15px}
+  .hero-vis .price-tag{right:8px;top:60px;padding:11px 15px}
   .hero-vis .price-tag .big{font-size:26px}
   .hero-vis .price-tag .sm{font-size:9.5px}
   .trust-strip .wrap{grid-template-columns:1fr 1fr;padding:22px 16px;gap:18px}
@@ -760,6 +768,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   .floating{display:flex}
   .about-stats{grid-template-columns:1fr 1fr}
   .reviews-summary{flex-direction:column;gap:8px;text-align:center}
+  .day-card .day-photo{height:160px}
   .day-card{padding:28px 22px}
   .day-num{font-size:54px}
   .form-sec .countdown{flex-direction:column;align-items:flex-start}
@@ -773,12 +782,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 @media (max-width:760px){
   .hero-vis .photo-main{aspect-ratio:unset;height:clamp(320px,88vw,480px);border-radius:16px}
   .hero-vis .corner{top:12px;left:12px;right:auto;font-size:clamp(10px,2.8vw,12px);padding:6px 12px;max-width:calc(100% - 24px);white-space:nowrap}
-  .hero-vis .price-tag{top:12px;right:12px;left:auto;width:90px;height:90px;border-radius:50%;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:none}
+  .hero-vis .price-tag{top:60px;right:12px;left:auto;width:90px;height:90px;border-radius:50%;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:none}
   .hero-vis .price-tag .big{font-size:16px}
   .hero-vis .price-tag .sm{font-size:10px}
-  .hero-vis .float-card{bottom:12px;left:12px;right:12px;max-width:calc(100% - 24px);padding:12px 14px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
-  .hero-vis .float-card b{font-size:14px}
-  .hero-vis .float-card span{font-size:12px}
   form.leadform{grid-template-columns:1fr;gap:16px}
   form.leadform .field{gap:8px}
   form.leadform .field.full{grid-column:span 1}
@@ -788,8 +794,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 }
 @media (max-width:600px){
   .modal-content{padding:24px 20px;max-height:90vh;border-radius:12px}
-  .cookies-banner{flex-direction:column;align-items:stretch}
-  .cookies-banner button{width:100%;text-align:center}
+  .cookies-banner{padding:16px;gap:16px;flex-direction:column;align-items:stretch}
+  .cookies-actions{width:100%;justify-content:stretch;flex-direction:column}
+  .cookies-btn{width:100%}
 }
 @media (max-width:480px){
   .hero h1{font-size:clamp(22px,6vw,30px);line-height:1.2;word-wrap:break-word;overflow-wrap:break-word;max-width:100%}
@@ -800,6 +807,17 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   .hero .lead{font-size:14px;line-height:1.5;max-width:100%;padding:0;overflow-wrap:break-word}
   form.leadform input,form.leadform select{width:100%;box-sizing:border-box;padding:14px 16px;font-size:16px}
 }
+.banner-photo{width:100%;max-width:1200px;margin:40px auto;padding:0 16px;box-sizing:border-box}
+.banner-photo img{width:100%;height:auto;max-height:480px;object-fit:cover;border-radius:24px;display:block;box-shadow:0 10px 30px rgba(27,42,54,0.12)}
+@media(max-width:760px){.banner-photo{margin:24px auto}.banner-photo img{max-height:280px;border-radius:16px}}
+.vpn-notice{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(201,168,118,0.15);border:1px solid rgba(201,168,118,0.4);border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.4;color:#2c4a5e}
+.vpn-notice-icon{flex-shrink:0;font-size:16px;line-height:1.2}
+.vpn-notice-text{flex:1}
+.form-sec .vpn-notice{background:rgba(244,238,227,0.1);border-color:rgba(244,238,227,0.25);color:rgba(244,238,227,0.9)}
+@media(max-width:600px){.vpn-notice{font-size:12px;padding:10px 12px}}
+.contacts-photo{width:100%;max-height:400px;height:auto;object-fit:cover;border-radius:24px;display:block;align-self:start}
+.contacts-photo-caption{margin-top:16px;font-family:var(--fhand);font-size:clamp(36px,5vw,56px);line-height:1.1;color:#2c4a5e;text-align:center;font-weight:600}
+@media(max-width:760px){.contacts-photo{max-height:240px;border-radius:16px}.contacts-photo-caption{font-size:clamp(28px,7vw,40px);margin-top:12px}}
 </style>
 </head>
 <body>
@@ -903,11 +921,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <div class="hero-vis">
         <div class="photo-main">
           <span class="corner"><i></i> Ближайший заезд · 27–29 июня</span>
-          <img src="assets/hero-kayaks.jpg" alt="Группа гостей с каяками на берегу реки в Тверской области" class="hero-img">
-        </div>
-        <div class="float-card">
-          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18h18M3 13l3-3 4 4 5-7 6 6"></path></svg></div>
-          <div><b>3,5 часа от Москвы</b><span>Электричка до Твери, дальше&nbsp;— наш автобус</span></div>
+          <img src="1.jpg" alt="Глэмпинг на Тверце · группа гостей с каяками на берегу" class="hero-img" loading="eager">
         </div>
         <div class="price-tag">
           <div class="big">19 000 ₽</div>
@@ -1077,8 +1091,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
               <input type="text" name="q_name" placeholder="Ваше имя" autocomplete="name">
             </div>
             <div class="field">
-              <label>Телефон или Telegram</label>
-              <input type="tel" name="q_phone" placeholder="+7 (___) ___-__-__ или @username">
+              <label>Номер телефона</label>
+              <input type="tel" name="q_phone" placeholder="+7 (___) ___-__-__" inputmode="tel" pattern="^(\+7|8)[\s\(\-]?\d{3}[\s\)\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$" autocomplete="tel">
+              <div id="q_phone_error" style="display:none;color:#d9534f;font-size:12px;margin-top:4px">Введите номер телефона</div>
             </div>
             <div class="field">
               <label>Куда удобнее ответить?</label>
@@ -1087,6 +1102,10 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
                 <button type="button" data-val="Звонок">Звонок</button>
                 <button type="button" data-val="MAX">MAX</button>
               </div>
+            </div>
+            <div class="vpn-notice">
+              <span class="vpn-notice-icon">⚠️</span>
+              <span class="vpn-notice-text">Если у вас включён VPN — выключите его перед отправкой заявки, иначе форма может не отработать.</span>
             </div>
             <label class="consent">
               <input type="checkbox" name="consent" required>
@@ -1137,6 +1156,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <div class="program-grid">
 
       <article class="day-card d1">
+        <img src="4.jpg" alt="Шатёр в лесу у глэмпинга · вечер первого дня" class="day-photo" loading="lazy" style="object-position:center 70%">
         <div class="day-head">
           <div class="day-num">01</div>
           <div class="day-meta">День первый<b>Заезд</b></div>
@@ -1153,6 +1173,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       </article>
 
       <article class="day-card d2">
+        <img src="6.jpg" alt="Сплав на каяках по реке · второй день тура" class="day-photo" loading="lazy" style="object-position:center 70%">
         <div class="day-head">
           <div class="day-num">02</div>
           <div class="day-meta">День второй<b>Полный</b></div>
@@ -1170,6 +1191,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       </article>
 
       <article class="day-card d3">
+        <img src="8.jpg" alt="День третий — утро у воды, второй сплав по реке" class="day-photo" loading="lazy" style="object-position:center 70%">
         <div class="day-head">
           <div class="day-num">03</div>
           <div class="day-meta">День третий<b>Прощание</b></div>
@@ -1336,6 +1358,10 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   </div>
 </section>
 
+<div class="banner-photo">
+  <img src="15.jpeg" alt="Глэмпинг на Тверце — атмосфера тура" loading="lazy">
+</div>
+
 <!-- ============ WHY US (bento) ============ -->
 <section id="why" class="loose" data-screen-label="Что входит">
   <div class="wrap">
@@ -1347,25 +1373,25 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     </div>
 
     <div class="bento">
-      <div class="cell moss c-span2">
+      <div class="cell moss c-span2 has-photo" style="background-image:url('11.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V11l7-6 7 6v10"></path><path d="M9 21v-6h6v6"></path></svg></div>
         <h3>Шатры с кроватью</h3>
         <p>Двухместные сафари-шатры с настоящей кроватью, постелью, ковром на полу и лампой у изголовья. Не надо ничего раскладывать и надувать — заходите и живёте.</p>
       </div>
 
-      <div class="cell c-span2">
+      <div class="cell c-span2 has-photo" style="background-image:url('7.PNG');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v6M14 2v6M6 14h12l-2 6H8z"></path><path d="M6 14a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3"></path></svg></div>
         <h3>Шведский стол 3 раза в день</h3>
         <p>Полноценный ресторан на берегу: завтрак, обед и ужин по расписанию. Локальная кухня, свежий хлеб из печи, веганские опции.</p>
       </div>
 
-      <div class="cell beige c-span2">
+      <div class="cell beige c-span2 has-photo" style="background-image:url('9.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14M7 22V10M17 22V10M3 10h18L17 4H7z"></path><path d="M11 14v4M13 14v4"></path></svg></div>
         <h3>Баня на дровах</h3>
         <p>Настоящая рубленая баня, парение от банщика, веники, чан с травяным чаем и прыжок в речку. Без шума.</p>
       </div>
 
-      <div class="cell bark c-span3">
+      <div class="cell bark c-span3 has-photo" style="background-image:url('2.jpg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c4-4 18-4 20 0c-2 4-16 4-20 0z"></path><path d="M12 4v16M5 8l14 8M19 8L5 16"></path></svg></div>
         <h3>Сплавы на каяках</h3>
         <p>Два сплава за тур по тихой реке. Даже если в последний раз гребли в парке Горького — справитесь. Инструктор, жилеты, гермомешки, остановка с кофе на песчаной косе.</p>
@@ -1375,7 +1401,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </ul>
       </div>
 
-      <div class="cell dark c-span3">
+      <div class="cell dark c-span3 has-photo" style="background-image:url('12.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
         <h3>Координатор рядом</h3>
         <p>Личное сопровождение от первого вопроса до сборов: подскажу что взять, забронирую баню, отвечу в Telegram даже в дороге. Не безликий ресепшен — конкретный человек, который знает программу, людей и территорию.</p>
@@ -1650,6 +1676,10 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
                 <option>Звонок</option>
               </select>
             </div>
+            <div class="vpn-notice">
+              <span class="vpn-notice-icon">⚠️</span>
+              <span class="vpn-notice-text">Если у вас включён VPN — выключите его перед отправкой заявки, иначе форма может не отработать.</span>
+            </div>
             <div class="submit-row">
               <button type="submit" class="send">Забронировать место
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
@@ -1704,9 +1734,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
         <a href="#order" class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center">Забронировать заезд →</a>
       </div>
-      <div class="map-card">
-        <div class="pin">Глэмпинг · Тверская обл., р. Медведица</div>
-        <image-slot id="map" shape="rect" placeholder="Фото локации или скрин карты"></image-slot>
+      <div class="contacts-photo-wrap">
+        <img src="16.jpeg" alt="Глэмпинг · Тверская область, река Медведица" class="contacts-photo" loading="lazy">
+        <div class="contacts-photo-caption">Глэмпинг · Тверская обл., р. Медведица</div>
       </div>
     </div>
   </div>
@@ -1785,8 +1815,15 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 
 <!-- ============ COOKIES BANNER ============ -->
 <div class="cookies-banner" id="cookies-banner" hidden>
-  <span>Сайт использует cookies для улучшения работы. Продолжая использование сайта, вы соглашаетесь с обработкой cookies.</span>
-  <button id="cookies-accept">Принять</button>
+  <div class="cookies-text">
+    <b>Мы используем cookies</b>
+    <span>Сайт использует cookies для улучшения работы и аналитики. Подробнее в <a href="#" data-modal="privacy">Политике конфиденциальности</a>.</span>
+  </div>
+  <div class="cookies-actions">
+    <button id="cookies-accept-all" class="cookies-btn cookies-btn-primary">Принять все</button>
+    <button id="cookies-essential" class="cookies-btn cookies-btn-secondary">Только необходимые</button>
+    <button id="cookies-configure" class="cookies-btn cookies-btn-link">Настроить</button>
+  </div>
 </div>
 
 <!-- ============ MODALS ============ -->
@@ -1930,10 +1967,25 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       var phoneEl = step3.querySelector('[name="q_phone"]');
       var consentEl = step3.querySelector('[name="consent"]');
       var valid = true;
+      var phoneErr = document.getElementById('q_phone_error');
       [nameEl, phoneEl].forEach(function(el){
         if(!el.value.trim()){ el.style.borderColor='#d9534f'; valid=false; }
         else { el.style.borderColor=''; }
       });
+      if(phoneEl.value.trim()){
+        var phoneVal = phoneEl.value.trim();
+        var hasLetters = /[a-zA-Zа-яА-Я]/.test(phoneVal);
+        var startsAt = phoneVal.startsWith('@');
+        if(hasLetters || startsAt){
+          phoneEl.style.borderColor='#d9534f';
+          if(phoneErr) phoneErr.style.display='block';
+          valid=false;
+        } else {
+          if(phoneErr) phoneErr.style.display='none';
+        }
+      } else {
+        if(phoneErr) phoneErr.style.display='none';
+      }
       if(consentEl && !consentEl.checked){ consentEl.closest('label').style.outline='2px solid #d9534f'; valid=false; }
       else if(consentEl){ consentEl.closest('label').style.outline=''; }
       if(!valid) return;
@@ -1942,17 +1994,20 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       nextBtn.textContent = 'Отправляем...';
       nextBtn.disabled = true;
       var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxrMG2674OUac_VUlWafI1kAYblai9Ffg3DiSJcrDWghbXwVNK2MYu51-IoQZTpe1G3/exec';
+      var quizData = {
+        source:'quiz',
+        name: nameEl.value.trim(),
+        contact: phoneEl.value.trim(),
+        channel: channelBtn ? channelBtn.dataset.val : '',
+        month:   monthBtn  ? monthBtn.dataset.val   : ''
+      };
+      console.log('Отправка заявки (квиз):', quizData);
       fetch(SCRIPT_URL, {
         method:'POST', mode:'no-cors',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          source:'quiz',
-          name: nameEl.value.trim(),
-          contact: phoneEl.value.trim(),
-          channel: channelBtn ? channelBtn.dataset.val : '',
-          month:   monthBtn  ? monthBtn.dataset.val   : ''
-        })
-      }).then(function(){ showQuizDone(); }).catch(function(){ showQuizDone(); });
+        body: JSON.stringify(quizData)
+      }).then(function(){ console.log('Квиз: заявка отправлена успешно'); showQuizDone(); })
+        .catch(function(err){ console.error('Квиз: ошибка отправки:', err); showQuizDone(); });
       function showQuizDone(){
         steps.forEach(function(s){ s.classList.remove('active'); });
         done.classList.add('active');
@@ -2007,18 +2062,21 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     var dateEl   = form.querySelector('[name="date"]');
     var guestsEl = form.querySelector('[name="guests"]');
     var chEl     = form.querySelector('[name="ch"]');
+    var leadData = {
+      source:'leadform',
+      name:   nameEl.value.trim(),
+      phone:  phoneEl.value.trim(),
+      date:   dateEl   ? dateEl.value   : '',
+      guests: guestsEl ? guestsEl.value : '',
+      channel: chEl    ? chEl.value     : ''
+    };
+    console.log('Отправка заявки (форма):', leadData);
     fetch(SCRIPT_URL, {
       method:'POST', mode:'no-cors',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        source:'leadform',
-        name:   nameEl.value.trim(),
-        phone:  phoneEl.value.trim(),
-        date:   dateEl   ? dateEl.value   : '',
-        guests: guestsEl ? guestsEl.value : '',
-        channel: chEl    ? chEl.value     : ''
-      })
-    }).then(function(){ showDone(); }).catch(function(){ showDone(); });
+      body: JSON.stringify(leadData)
+    }).then(function(){ console.log('Форма: заявка отправлена успешно'); showDone(); })
+      .catch(function(err){ console.error('Форма: ошибка отправки:', err); showDone(); });
     function showDone(){
       form.style.display = 'none';
       var msg = document.createElement('div');
@@ -2054,16 +2112,67 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 /* ────── COOKIES ────── */
 (function(){
   var banner = document.getElementById('cookies-banner');
-  var btn    = document.getElementById('cookies-accept');
   if(!banner) return;
-  if(!localStorage.getItem('cookies-accepted')){
-    banner.removeAttribute('hidden');
+  if(localStorage.getItem('cookies-consent')){ banner.style.display='none'; return; }
+  banner.removeAttribute('hidden');
+
+  function saveConsent(consent){
+    localStorage.setItem('cookies-consent', JSON.stringify({
+      essential: true,
+      analytics: consent.analytics || false,
+      marketing: consent.marketing || false,
+      date: new Date().toISOString()
+    }));
+    banner.style.display='none';
   }
-  if(btn) btn.addEventListener('click', function(){
-    localStorage.setItem('cookies-accepted','1');
-    banner.setAttribute('hidden','');
+
+  document.getElementById('cookies-accept-all').addEventListener('click', function(){
+    saveConsent({analytics:true, marketing:true});
+  });
+  document.getElementById('cookies-essential').addEventListener('click', function(){
+    saveConsent({analytics:false, marketing:false});
+  });
+  document.getElementById('cookies-configure').addEventListener('click', function(){
+    var modal = document.getElementById('modal-cookies-settings');
+    modal.removeAttribute('hidden');
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+  var saveSettingsBtn = document.getElementById('cookies-save-settings');
+  if(saveSettingsBtn) saveSettingsBtn.addEventListener('click', function(){
+    saveConsent({
+      analytics: document.getElementById('cookie-analytics').checked,
+      marketing: document.getElementById('cookie-marketing').checked
+    });
+    var modal = document.getElementById('modal-cookies-settings');
+    if(modal){ modal.setAttribute('hidden',''); modal.classList.remove('open'); }
+    document.body.style.overflow='';
   });
 })();
 </script>
+
+<div class="modal" id="modal-cookies-settings" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-content">
+    <button class="modal-close" data-close aria-label="Закрыть">×</button>
+    <h2>Настройки cookies</h2>
+    <div class="modal-body">
+      <p>Выберите какие cookies вы разрешаете использовать на сайте:</p>
+      <label class="cookie-option">
+        <input type="checkbox" checked disabled>
+        <div><b>Необходимые</b><span>Обеспечивают базовую работу сайта (форма заявки, согласие на cookies). Не отключаются.</span></div>
+      </label>
+      <label class="cookie-option">
+        <input type="checkbox" id="cookie-analytics" checked>
+        <div><b>Аналитика</b><span>Помогают понимать, как используется сайт, чтобы улучшать его работу.</span></div>
+      </label>
+      <label class="cookie-option">
+        <input type="checkbox" id="cookie-marketing">
+        <div><b>Маркетинговые</b><span>Используются для показа релевантной рекламы и измерения её эффективности.</span></div>
+      </label>
+      <button id="cookies-save-settings" class="cookies-btn cookies-btn-primary" style="width:100%;margin-top:16px;">Сохранить выбор</button>
+    </div>
+  </div>
+</div>
 
 </body></html>
