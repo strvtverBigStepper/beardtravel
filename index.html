@@ -208,11 +208,18 @@ section.loose{padding:104px 0}
 
 /* ============ NAV ============ */
 .nav{
-  position:sticky;top:0;z-index:50;
-  background:rgba(248,243,232,.92);
-  backdrop-filter:saturate(140%) blur(10px);
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(244,238,227,.95);
+  backdrop-filter:saturate(140%) blur(12px);
+  -webkit-backdrop-filter:saturate(140%) blur(12px);
   border-bottom:1px solid var(--line-2);
+  transition:box-shadow .3s ease;
 }
+.nav.scrolled{box-shadow:0 2px 16px rgba(27,42,54,.08)}
+/* компенсация фиксированной шапки */
+body{padding-top:74px}
+html{scroll-padding-top:90px}
+@media(max-width:760px){body{padding-top:64px}html{scroll-padding-top:76px}}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-logo{display:flex;align-items:center;gap:10px}
@@ -258,7 +265,7 @@ footer .logo{height:48px}
 .hero-h1 .accent{color:var(--moss)}
 .hero-h1 .hand{display:inline-block;color:var(--bark);font-size:.95em;transform:translateY(-.04em) rotate(-2deg);font-weight:600}
 .hero .lead{margin-top:24px;max-width:540px;font-size:18px;line-height:1.55;color:var(--ink-2)}
-.hero .ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero .ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
 .hero .micro{margin-top:22px;display:flex;gap:8px 20px;color:var(--mute);font-size:13px;align-items:center;flex-wrap:wrap}
 .hero .micro span{display:inline-flex;align-items:center;gap:7px}
 .hero .micro .dot{width:5px;height:5px;border-radius:50%;background:var(--moss);flex:0 0 5px}
@@ -829,6 +836,34 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 .contacts-photo{width:100%;max-height:400px;height:auto;object-fit:cover;border-radius:24px;display:block;align-self:start}
 .contacts-photo-caption{margin-top:16px;font-family:var(--fhand);font-size:clamp(36px,5vw,56px);line-height:1.1;color:#2c4a5e;text-align:center;font-weight:600}
 @media(max-width:760px){.contacts-photo{max-height:240px;border-radius:16px}.contacts-photo-caption{font-size:clamp(28px,7vw,40px);margin-top:12px}}
+/* ============ GALLERY ============ */
+.gallery{padding:80px 0;background:var(--paper)}
+.gallery .section-head{display:block;text-align:center;margin-bottom:0}
+.gallery .section-head h2{margin-top:18px}
+.gallery .section-head p.lead{margin-top:12px;font-size:17px;color:var(--ink-2);max-width:560px;margin-left:auto;margin-right:auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:260px;gap:16px;margin-top:40px}
+.gallery-item{overflow:hidden;border-radius:16px;cursor:pointer;transition:transform .4s ease,box-shadow .4s ease;position:relative}
+.gallery-item:hover{transform:scale(1.02);box-shadow:0 12px 32px rgba(27,42,54,.15)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;object-position:center 70%;display:block;transition:transform .6s ease}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-item:nth-child(5){grid-column:span 2}
+@media(max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;gap:10px}.gallery-item:nth-child(1),.gallery-item:nth-child(5){grid-column:span 2;grid-row:auto}}
+@media(max-width:480px){.gallery-grid{grid-template-columns:1fr;grid-auto-rows:240px}.gallery-item:nth-child(1),.gallery-item:nth-child(5){grid-column:auto}}
+/* ============ SAFETY FAQ ============ */
+.safety-faq{padding:80px 0;background:var(--paper)}
+.safety-accordion{max-width:760px;margin:40px auto 0;display:flex;flex-direction:column;gap:12px}
+.safety-item{background:#fff;border-radius:16px;padding:20px 24px;box-shadow:0 2px 12px rgba(27,42,54,.04);transition:box-shadow .3s ease}
+.safety-item[open]{box-shadow:0 4px 20px rgba(27,42,54,.08)}
+.safety-item summary{font-weight:600;font-size:17px;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-right:8px}
+.safety-item summary::-webkit-details-marker{display:none}
+.safety-item summary::after{content:'+';font-size:24px;font-weight:300;color:var(--honey);transition:transform .3s ease;flex-shrink:0}
+.safety-item[open] summary::after{content:'−';transform:rotate(180deg)}
+.safety-content{margin-top:16px;color:var(--mute);line-height:1.6;font-size:15px}
+.safety-content p{margin:0 0 12px}
+.safety-content p:last-child{margin-bottom:0}
+.safety-content strong{color:var(--ink)}
+@media(max-width:480px){.safety-faq{padding:60px 0}.safety-item{padding:16px 18px}.safety-item summary{font-size:15px}}
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -882,10 +917,10 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     </a>
     <nav class="nav-links">
       <a href="#program" class="hot">Программа</a>
-      <a href="#dates">Заезды</a>
+      <a href="#dates">Расписание</a>
       <a href="#why">Что входит</a>
       <a href="#reviews">Отзывы</a>
-      <a href="#faq">Вопросы</a>
+      <a href="#gallery">Галерея</a>
     </nav>
     <div class="nav-cta">
       <div class="phone">+7 (996) 635-51-48<small>Ежедневно с 9:00 до 22:00</small></div>
@@ -915,13 +950,10 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
           <div class="mega-num">19<span class="cur">000₽</span></div>
         </div>
         <h1 class="hero-h1"><span class="accent">Сплав на каяках</span>, лес и тишина — в&nbsp;<span class="hand">3 часах от Москвы</span></h1>
-        <p class="lead">Глэмпинг в&nbsp;Тверской области для тех, кто живёт в&nbsp;ритме мегаполиса. Шатры с&nbsp;кроватью, шведский стол, баня на&nbsp;дровах, сплавы на&nbsp;каяках, сапы, лодки, костёр под звёздами. Приезжаете с&nbsp;рюкзаком&nbsp;— остальное у&nbsp;нас.</p>
+        <p class="lead">Авторский тур выходного дня для тех, кто хочет выдохнуть после города. Шатёр с&nbsp;настоящей кроватью, шведский стол на&nbsp;берегу реки, сплав на&nbsp;каяках по&nbsp;тёплой воде, баня и&nbsp;костёр. Природа Тверской области&nbsp;— в&nbsp;3 часах от&nbsp;Москвы, без палаток и&nbsp;страданий.</p>
         <div class="ctas">
           <a href="#dates" class="btn btn-primary btn-lg">Выбрать заезд
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-          </a>
-          <a href="#quiz" class="btn btn-ghost btn-lg">
-            Подобрать за&nbsp;1&nbsp;минуту
           </a>
         </div>
         <div class="hero-timer">
@@ -1493,13 +1525,13 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <div class="cell c-span2 has-photo" style="background-image:url('o.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v6M14 2v6M6 14h12l-2 6H8z"></path><path d="M6 14a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3"></path></svg></div>
         <h3>Шведский стол 3 раза в день</h3>
-        <p>Полноценный ресторан на берегу: завтрак, обед и ужин по расписанию. Локальная кухня, свежий хлеб из печи, веганские опции.</p>
+        <p>Шведский стол по утрам, обедам и ужинам — локальная кухня, свежий хлеб из печи, есть веганские опции.</p>
       </div>
 
       <div class="cell beige c-span2 has-photo" style="background-image:url('9.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14M7 22V10M17 22V10M3 10h18L17 4H7z"></path><path d="M11 14v4M13 14v4"></path></svg></div>
-        <h3>Баня на дровах</h3>
-        <p>Настоящая рубленая баня, парение от банщика, веники, чан с травяным чаем и прыжок в речку. Без шума.</p>
+        <h3>Настоящая русская баня с веничком</h3>
+        <p>Топится каждый вечер. Парение от банщика, веники, чан с травяным чаем и прыжок в реку — всё включено.</p>
       </div>
 
       <div class="cell bark c-span3 has-photo" style="background-image:url('2.jpg');background-size:cover;background-position:center">
@@ -1514,8 +1546,8 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 
       <div class="cell dark c-span3 has-photo" style="background-image:url('12.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-        <h3>Координатор рядом</h3>
-        <p>Личное сопровождение от первого вопроса до сборов: подскажу что взять, забронирую баню, отвечу в Telegram даже в дороге. Не безликий ресепшен — конкретный человек, который знает программу, людей и территорию.</p>
+        <h3>Я рядом всё время заезда</h3>
+        <p>Отвечу на вопросы, помогу с чем угодно. Не безликий ресепшен — конкретный человек, который знает программу, людей и территорию. Отвечаю в Telegram даже в дороге.</p>
         <ul class="bullets">
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Ответ в Telegram до 15 минут</li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> На связи весь тур ежедневно с 9:00 до 22:00</li>
@@ -1570,9 +1602,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       </div>
       <div class="about-copy">
         <span class="eyebrow">Кто я</span>
-        <h2>Знаю эти леса лучше карт&nbsp;— был у&nbsp;истоков глэмпинга</h2>
-        <p class="lead">Меня зовут Степан. По образованию географ — путешествия и природа со мной с университета. Путь в туризме начался в 2022-м: вместе с другом мы запускали глэмпинг на Тверце, я был у истоков. Потом решил сфокусироваться на авторских турах — а друг продолжил развивать глэмпинг как своё дело. Сейчас он — мой партнёр и человек, которому я доверяю.</p>
-        <p class="lead">Третий год вожу сюда свои группы — за это время через мои заезды прошло 100+ человек. Подбираю под каждого: едете один — соберу компанию по духу, едете парой — найду тихий уголок. Глэмпинг партнёрский, но моя задача — сделать так, чтобы у вас сложились правильные выходные. Природа, люди, ощущение свободы — то, ради чего я сам сюда возвращаюсь.</p>
+        <h2>Время познакомиться <span class="hand" style="color:#c9a876">поближе</span></h2>
+        <p class="lead">Меня зовут Степан. По образованию географ — путешествия и природа со мной с университета. Был у истоков глэмпинга в Тверской области ещё когда это слово мало кто слышал. За 3 года через мои заезды прошло больше 100 человек — большинство девочек, многие приезжают повторно.</p>
+        <p class="lead">Делаю всё, чтобы вы вернулись домой с ощущением «это были лучшие выходные за полгода». Подбираю программу под группу, рядом всё время заезда, на связи 24/7. Никакой «школы выживания» — только хорошая компания, тёплая постель и природа.</p>
         <div class="legend">«Не продаю туры. Делюсь местом, которое люблю.»</div>
         <div class="about-stats">
           <div><b>4 сезона</b><span>возим гостей с 2023 года</span></div>
@@ -1666,56 +1698,74 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq" class="loose" data-screen-label="FAQ">
+<section class="gallery" id="gallery" data-screen-label="Галерея">
   <div class="wrap">
-    <div class="faq">
-      <div class="faq-head-col">
-        <span class="eyebrow">Вопросы и ответы</span>
-        <h2 style="margin-top:18px">Часто спрашивают&nbsp;— честно отвечаем</h2>
-        <div class="faq-aside" style="margin-top:32px">
-          <div class="card">
-            <h3>Не нашли ответ?</h3>
-            <p>Напишите в&nbsp;Telegram&nbsp;— отвечу в&nbsp;течение 15&nbsp;минут лично. Расскажу про атмосферу, погоду, что&nbsp;брать и&nbsp;отвечу на&nbsp;любые вопросы.</p>
-            <a href="https://t.me/strv_1" target="_blank" class="btn btn-light">Написать в Telegram</a>
-            <div class="phone">+7 (996) 635-51-48<small>Ежедневно с 9:00 до 22:00</small></div>
-          </div>
-        </div>
-      </div>
+    <div class="section-head" style="display:block;text-align:center">
+      <span class="eyebrow">ГАЛЕРЕЯ</span>
+      <h2 style="margin-top:18px">Так это выглядит вживую</h2>
+      <p class="lead" style="margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto">Фото с прошлых заездов — никаких стоков, только то что есть на самом деле</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="20.jpg" alt="Сплав на каяках" loading="lazy"></div>
+      <div class="gallery-item"><img src="21.jpeg" alt="Группа на природе" loading="lazy"></div>
+      <div class="gallery-item"><img src="22.jpg" alt="Глэмпинг на берегу" loading="lazy"></div>
+      <div class="gallery-item"><img src="23.jpg" alt="Вечер у костра" loading="lazy"></div>
+      <div class="gallery-item"><img src="25.jpg" alt="Утро у реки" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 
-      <div class="faq-list">
-        <details class="qitem" open>
-          <summary>А если я никогда не плавал на каяке?</summary>
-          <div class="ans">Спокойно. Большинство гостей — нет. Перед сплавом инструктор полчаса объясняет, как держать весло и что делать, если перевернётесь (не перевернётесь). Маршрут проходит по тихой реке без порогов.</div>
-        </details>
-        <details class="qitem">
-          <summary>Я еду один(одна) — будет неловко?</summary>
-          <div class="ans">Около половины группы всегда едет соло. К концу первого ужина все уже общаются. Никаких принудительных «расскажи о себе по кругу» — знакомство происходит само через общие активности.</div>
-        </details>
-        <details class="qitem">
-          <summary>Что если будет дождь?</summary>
-          <div class="ans">Шатры тёплые и непромокаемые, шатёр-ресторан крытый, баня дровяная. Сплав может сместиться на другой день — но ни разу за 4 сезона не отменялся полностью. Дождь в лесу, кстати, отдельный аттракцион.</div>
-        </details>
-        <details class="qitem">
-          <summary>Как добраться до Твери из Москвы?</summary>
-          <div class="ans">Электричка с Ленинградского вокзала — 1,5–2 часа, билет ~900 ₽. Расписание удобное, есть электрички в 12:30 и 14:00, успеваете к встрече в 16:30. От ж/д Твери до глэмпинга везёт наш автобус — бесплатно.</div>
-        </details>
-        <details class="qitem">
-          <summary>Что брать с собой?</summary>
-          <div class="ans">Минимум: тёплая кофта, кроссовки, купальник, тапки в баню, репеллент. Подробный список приходит за неделю до заезда вместе с программой и точкой встречи. Постель, полотенца, всё для бани и сплавов — наше.</div>
-        </details>
-        <details class="qitem">
-          <summary>А есть варианты для вегетарианцев?</summary>
-          <div class="ans">Да. На шведском столе всегда есть веганские горячие, овощные гарниры, орехи, фрукты, домашние сыры и хлеб. Аллергии и предпочтения уточняем при бронировании.</div>
-        </details>
-        <details class="qitem">
-          <summary>Можно ли приехать с партнёром в один шатёр?</summary>
-          <div class="ans">Конечно. Шатры двухместные, можно заселиться парой или двумя друзьями. Если едете один — мы никого к вам не подселяем без вашего согласия.</div>
-        </details>
-        <details class="qitem">
-          <summary>Можно ли выкупить заезд для своей компании?</summary>
-          <div class="ans">Да. Если вас 8 и больше — закрываем заезд только для вас. Можно подстроить программу под повод (день рождения, девичник, юбилей). Напишите в Telegram, рассчитаем индивидуально.</div>
-        </details>
-      </div>
+<!-- ============ SAFETY FAQ ============ -->
+<section class="safety-faq" data-screen-label="Вопросы перед поездкой">
+  <div class="wrap">
+    <div class="section-head" style="display:block;text-align:center">
+      <span class="eyebrow">ЕСЛИ ВОЛНУЕТЕСЬ</span>
+      <h2 style="margin-top:18px">Часто беспокоят такие моменты</h2>
+      <p class="lead" style="margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto">Самые частые вопросы, которые мне задают перед поездкой. Если волнуетесь — это нормально, я отвечаю честно.</p>
+    </div>
+    <div class="safety-accordion">
+      <details class="safety-item">
+        <summary>А если я не умею плавать?</summary>
+        <div class="safety-content">
+          <p>Всё в порядке — большинство девочек в группах не умеют. Маршрут проложен по тверской Медведице: <strong>максимальная глубина 1,5 метра</strong>, течение медленное, перевернуться на каяке практически невозможно (они устойчивые, как лодки).</p>
+          <p>Спасжилет — обязательно у каждого, выдаём перед сплавом. Я плыву рядом и при первой просьбе подгребаю на помощь. За 3 года — ни одного инцидента.</p>
+        </div>
+      </details>
+      <details class="safety-item">
+        <summary>Я никогда не сидела в каяке — справлюсь?</summary>
+        <div class="safety-content">
+          <p>Справитесь за 5 минут. Перед стартом — короткий инструктаж: как держать весло, как поворачивать, как остановиться. Каяки одно- и двухместные, можно идти с подругой или парнем в паре.</p>
+          <p>На сплав отводим 3–4 часа с остановками — никуда не торопимся, можно остановиться попить чай, перекусить, сфоткаться.</p>
+        </div>
+      </details>
+      <details class="safety-item">
+        <summary>Вода холодная? Я замёрзну?</summary>
+        <div class="safety-content">
+          <p>Заезды я планирую на июль–август, когда река прогревается до <strong>+22…+25°C</strong>. Это температура комфортного купания. Многие девочки специально купаются после сплава — вода как в бассейне.</p>
+          <p>На случай неожиданного дождя — у нас есть дождевики и сухая одежда в водонепроницаемых мешках.</p>
+        </div>
+      </details>
+      <details class="safety-item">
+        <summary>Что если я устану или передумаю плыть?</summary>
+        <div class="safety-content">
+          <p>Не вопрос. Маршрут разбит на участки — на любом из них можно сойти на берег, и я довезу до лагеря на машине. Никаких «ну давайте дотерпим до конца» — это ваш отдых.</p>
+          <p>Если изначально не уверены — можно вообще пропустить сплав и провести день в глэмпинге: шведский стол, баня, шезлонг, книжка.</p>
+        </div>
+      </details>
+      <details class="safety-item">
+        <summary>Что взять с собой?</summary>
+        <div class="safety-content">
+          <p>Минимум — удобная одежда, купальник, кроссовки или сандалии которые не жалко намочить, солнцезащитный крем, средство от комаров. Полотенце, постель, посуду — даём всё мы.</p>
+          <p>За день до выезда я пришлю в Telegram подробный чек-лист.</p>
+        </div>
+      </details>
+      <details class="safety-item">
+        <summary>А если я еду одна — не будет странно?</summary>
+        <div class="safety-content">
+          <p>Половина моих гостей — соло-девочки. В группе обычно 8–12 человек примерно одного возраста и интересов. К вечеру у костра все знакомятся, многие потом продолжают общаться после поездки.</p>
+          <p>Можете заранее посмотреть кто записан в ваш заезд — напишите мне в Telegram, расскажу состав группы.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -1885,7 +1935,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         <h5>Гостям</h5>
         <ul>
           <li><a href="#reviews">Отзывы</a></li>
-          <li><a href="#faq">Вопросы и ответы</a></li>
+          <li><a href="#gallery">Галерея</a></li>
           <li><a href="#order">Возврат и перенос</a></li>
           <li><a href="#contacts">Контакты</a></li>
         </ul>
@@ -2268,6 +2318,12 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     document.body.style.overflow='';
   });
 })();
+window.addEventListener('scroll',function(){
+  var header=document.querySelector('.nav');
+  if(!header)return;
+  if(window.scrollY>20)header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
 </script>
 
 <div class="modal" id="modal-cookies-settings" hidden>
