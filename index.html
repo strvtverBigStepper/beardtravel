@@ -6,10 +6,123 @@
 <link rel="apple-touch-icon" href="logo.jpg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Душевный детокс-выезд из мегаполиса: глэмпинг в Тверской области, шведский стол, баня на дровах, сплавы на каяках. 3 дня / 2 ночи · 19 000 ₽. Трансфер от ж/д Тверь.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://beardtravel.ru/">
+<meta property="og:title" content="beard.travel — Тур выходного дня в Тверской области · 19 000 ₽">
+<meta property="og:description" content="Глэмпинг, сплавы на каяках, баня и тишина — в 3 часах от Москвы. 3 дня / 2 ночи, всё включено. Трансфер от ж/д Тверь.">
+<meta property="og:image" content="https://beardtravel.ru/32.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="beard.travel — Тур выходного дня в Тверской области · 19 000 ₽">
+<meta name="twitter:description" content="Глэмпинг, сплавы на каяках, баня и тишина — в 3 часах от Москвы. 3 дня / 2 ночи, всё включено.">
+<meta name="twitter:image" content="https://beardtravel.ru/32.jpeg">
+<link rel="canonical" href="https://beardtravel.ru/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+    /* ===== PRELOADER ===== */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(180deg, #f4eee3 0%, #e8dec6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .preloader-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: min(400px, 80vw);
+    }
+    .preloader-brand {
+      font-family: 'Fraunces', ui-serif, Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(28px, 5vw, 40px);
+      color: #1b2a36;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: pl-brand-in 0.6s ease 0.1s forwards;
+    }
+    .preloader-brand span { color: #c9a876; }
+    .preloader-scene {
+      width: 100%;
+      height: auto;
+      max-width: 400px;
+    }
+    .preloader-hint {
+      font-family: 'Caveat', ui-serif, cursive;
+      font-size: 22px;
+      color: #5a8fb0;
+      opacity: 0;
+      animation: pl-hint-in 0.8s ease 0.6s forwards;
+    }
+
+    /* Волны — плывут влево бесконечно */
+    .preloader-scene .wave {
+      transform-origin: center;
+    }
+    .preloader-scene .wave-far {
+      fill: rgba(90, 143, 176, 0.25);
+      animation: pl-wave 4s ease-in-out infinite;
+    }
+    .preloader-scene .wave-mid {
+      fill: rgba(90, 143, 176, 0.45);
+      animation: pl-wave 3s ease-in-out infinite reverse;
+    }
+    .preloader-scene .wave-near {
+      fill: rgba(58, 111, 144, 0.7);
+      animation: pl-wave 2.5s ease-in-out infinite;
+    }
+
+    /* Каяк — лёгкое покачивание */
+    .preloader-scene .kayak {
+      transform-origin: 200px 140px;
+      animation: pl-kayak 2.5s ease-in-out infinite;
+    }
+    .preloader-scene .paddle {
+      transform-origin: 200px 115px;
+      animation: pl-paddle 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pl-wave {
+      0%, 100% { transform: translateX(0) scaleY(1); }
+      50%      { transform: translateX(-12px) scaleY(1.05); }
+    }
+    @keyframes pl-kayak {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50%      { transform: translateY(-3px) rotate(1.5deg); }
+    }
+    @keyframes pl-paddle {
+      0%, 100% { transform: rotate(-15deg); }
+      50%      { transform: rotate(15deg); }
+    }
+    @keyframes pl-brand-in {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pl-hint-in {
+      from { opacity: 0; }
+      to   { opacity: 0.8; }
+    }
+
+    /* Уменьшение для пользователей с prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .preloader-scene .wave,
+      .preloader-scene .kayak,
+      .preloader-scene .paddle { animation: none; }
+    }
+
 /* ============================================================
    ЛЕС & ВОДА — Тур выходного дня · Тверская область
    Архитектура наследована от B2C-лендинга; палитра — лесная
@@ -193,6 +306,7 @@ section.loose{padding:104px 0}
 
 /* ============ PROMO BAR ============ */
 .promo{
+  position:fixed;top:0;left:0;right:0;z-index:99;
   background:var(--ink);color:rgba(248,243,232,.8);
   font-size:12.5px;letter-spacing:.005em;
 }
@@ -208,7 +322,7 @@ section.loose{padding:104px 0}
 
 /* ============ NAV ============ */
 .nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:38px;left:0;right:0;z-index:100;
   background:rgba(244,238,227,.95);
   backdrop-filter:saturate(140%) blur(12px);
   -webkit-backdrop-filter:saturate(140%) blur(12px);
@@ -216,10 +330,10 @@ section.loose{padding:104px 0}
   transition:box-shadow .3s ease;
 }
 .nav.scrolled{box-shadow:0 2px 16px rgba(27,42,54,.08)}
-/* компенсация фиксированной шапки */
-body{padding-top:74px}
-html{scroll-padding-top:90px}
-@media(max-width:760px){body{padding-top:64px}html{scroll-padding-top:76px}}
+/* компенсация фиксированных promo + nav */
+body{padding-top:112px}
+html{scroll-padding-top:130px}
+@media(max-width:760px){body{padding-top:96px}html{scroll-padding-top:110px}}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-logo{display:flex;align-items:center;gap:10px}
@@ -479,6 +593,9 @@ footer .logo{height:48px}
 .date-card.soldout{opacity:.6}
 .date-card.soldout .cta .btn{background:var(--beige-2);color:var(--mute);cursor:not-allowed;box-shadow:none}
 .date-card.soldout .cta .btn:hover{transform:none;background:var(--beige-2)}
+.date-card.past{opacity:.5}
+.date-card.past .cta .btn{background:var(--beige-2);color:var(--mute);cursor:not-allowed;box-shadow:none}
+.date-card.past .cta .btn:hover{transform:none;background:var(--beige-2)}
 
 .price-note{margin-top:32px;display:flex;gap:16px;align-items:flex-start;padding:24px 28px;border-radius:var(--r-lg);background:var(--beige);border:1px solid var(--line-2)}
 .price-note .ic{width:46px;height:46px;border-radius:12px;background:#fff;display:grid;place-items:center;color:var(--moss);flex:0 0 46px;box-shadow:var(--shadow-sm)}
@@ -790,7 +907,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 @media (max-width:760px){
   .hero-vis .photo-main{aspect-ratio:unset;height:clamp(320px,88vw,480px);border-radius:16px}
   .hero-vis .corner{top:12px;left:12px;right:auto;font-size:clamp(10px,2.8vw,12px);padding:6px 12px;max-width:calc(100% - 24px);white-space:nowrap}
-  .hero-vis .price-tag{top:60px;right:12px;left:auto;width:90px;height:90px;border-radius:50%;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:none}
+  .hero-vis .price-tag{top:60px;right:12px;left:auto;width:112px;height:112px;border-radius:50%;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:none}
   .hero-vis .price-tag .big{font-size:16px}
   .hero-vis .price-tag .sm{font-size:10px}
   form.leadform{grid-template-columns:1fr;gap:16px}
@@ -880,6 +997,38 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 </head>
 <body>
 
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-brand">beard<span>.travel</span></div>
+      <svg class="preloader-scene" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Дальние волны -->
+        <path class="wave wave-far" d="M -50 130 Q 50 120, 100 130 T 250 130 T 450 130 L 450 200 L -50 200 Z" />
+        <!-- Средние волны -->
+        <path class="wave wave-mid" d="M -50 145 Q 50 135, 100 145 T 250 145 T 450 145 L 450 200 L -50 200 Z" />
+        <!-- Ближние волны -->
+        <path class="wave wave-near" d="M -50 160 Q 50 152, 100 160 T 250 160 T 450 160 L 450 200 L -50 200 Z" />
+
+        <!-- Каяк (силуэт) с веслом -->
+        <g class="kayak">
+          <!-- весло -->
+          <g class="paddle">
+            <line x1="200" y1="115" x2="200" y2="80" stroke="#1b2a36" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="200" cy="78" rx="8" ry="4" fill="#1b2a36"/>
+            <ellipse cx="200" cy="152" rx="8" ry="4" fill="#1b2a36"/>
+          </g>
+          <!-- гребец -->
+          <circle cx="200" cy="118" r="6" fill="#1b2a36"/>
+          <path d="M 195 124 L 195 132 L 205 132 L 205 124 Z" fill="#1b2a36"/>
+          <!-- каяк -->
+          <path d="M 170 138 Q 200 132, 230 138 Q 232 142, 230 145 Q 200 150, 170 145 Q 168 142, 170 138 Z" fill="#1b2a36"/>
+          <ellipse cx="200" cy="140" rx="10" ry="3" fill="#3a6f90"/>
+        </g>
+      </svg>
+      <div class="preloader-hint">грузим реку…</div>
+    </div>
+  </div>
+
 <template id="__bundler_thumbnail">
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <rect width="100" height="100" fill="#3A6F90"/>
@@ -945,31 +1094,15 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         <div class="mega-disc">
           <div class="mega-left">
             <span class="mega-pre">всё включено</span>
-            <span class="mega-pre accent">от</span>
           </div>
           <div class="mega-num">19<span class="cur">000₽</span></div>
         </div>
         <h1 class="hero-h1"><span class="accent">Сплав на каяках</span>, лес и тишина — в&nbsp;<span class="hand">3 часах от Москвы</span></h1>
-        <p class="lead">Авторский тур выходного дня для тех, кто хочет выдохнуть после города. Шатёр с&nbsp;настоящей кроватью, шведский стол на&nbsp;берегу реки, сплав на&nbsp;каяках по&nbsp;тёплой воде, баня и&nbsp;костёр. Природа Тверской области&nbsp;— в&nbsp;3 часах от&nbsp;Москвы, без палаток и&nbsp;страданий.</p>
+        <p class="lead">Авторский тур выходного дня для тех, кто хочет выдохнуть после города. Шатёр с&nbsp;настоящей кроватью, шведский стол на&nbsp;берегу реки, сплав на&nbsp;каяках по&nbsp;тёплой воде, баня и&nbsp;костёр. Природа Тверской области&nbsp;— в&nbsp;3 часах от&nbsp;Москвы.</p>
         <div class="ctas">
           <a href="#dates" class="btn btn-primary btn-lg">Выбрать заезд
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
-        </div>
-        <div class="hero-timer">
-          <div class="timer-label">До ближайшего заезда 27–29 июня:</div>
-          <div class="timer-unit"><div class="timer-num" id="ht-days">00</div><div class="timer-lbl">дней</div></div>
-          <div class="timer-sep">:</div>
-          <div class="timer-unit"><div class="timer-num" id="ht-hours">00</div><div class="timer-lbl">часов</div></div>
-          <div class="timer-sep">:</div>
-          <div class="timer-unit"><div class="timer-num" id="ht-mins">00</div><div class="timer-lbl">минут</div></div>
-          <div class="timer-sep">:</div>
-          <div class="timer-unit"><div class="timer-num" id="ht-secs">00</div><div class="timer-lbl">секунд</div></div>
-        </div>
-        <div class="micro">
-          <span><span class="dot"></span> Группа до 24 человек</span>
-          <span><span class="dot"></span> Шатры с кроватью</span>
-          <span><span class="dot"></span> Возврат если не подойдёт</span>
         </div>
       </div>
 
@@ -1009,30 +1142,6 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   </div>
 </section>
 
-<!-- ============ DEADLINE BANNER ============ -->
-<section class="tight" data-screen-label="Дедлайн" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="deadline-banner">
-      <div style="position:relative;z-index:2">
-        <div class="eyebrow light">Места заканчиваются</div>
-        <h3 style="color:#fff;margin-top:12px;font-size:clamp(22px,2.2vw,30px);max-width:560px">До ближайшего заезда <b style="color:var(--honey);font-weight:600">27–29 июня</b> — осталось 6 мест из 24</h3>
-      </div>
-      <div class="deadline-right">
-        <div class="countdown" data-countdown="2026-06-27T16:30:00">
-          <div class="cd-clock">
-            <div class="cd-unit dark"><b data-cd="d">00</b><span>дней</span></div>
-            <div class="cd-unit dark"><b data-cd="h">00</b><span>часов</span></div>
-            <div class="cd-unit dark"><b data-cd="m">00</b><span>минут</span></div>
-            <div class="cd-unit dark"><b data-cd="s">00</b><span>секунд</span></div>
-          </div>
-        </div>
-        <a href="#order" class="btn btn-honey">Забронировать место
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ QUIZ ============ -->
 <section class="quiz-sec loose" id="quiz" data-screen-label="Квиз подбора">
@@ -1051,7 +1160,6 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         <h2>3 вопроса —<br>и идеальный<br>выезд у вас в&nbsp;календаре</h2>
         <p>Расскажите, едете один или с&nbsp;компанией и&nbsp;что важнее. Остальное сделает координатор: подберёт заезд, проверит наличие мест и&nbsp;поможет с&nbsp;дорогой.</p>
         <div class="aside-perks">
-          <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Без навязывания — просто подбор</div>
           <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Скидка 1 500 ₽ за раннюю бронь <small style="font-size:11px;opacity:.7">до 30 июня 2026</small></div>
           <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Ответ в Telegram за 15 минут</div>
         </div>
@@ -1168,7 +1276,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
             </label>
             <div class="quiz-hint">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-              Прошедшим квиз — скидка 1 500 ₽ при бронировании в этом месяце. <small style="font-size:11px;opacity:.75">Скидка действует при бронировании до 30 июня 2026 г.</small>
+              Прошедшим квиз — скидка 1 500 ₽ при бронировании в этом месяце.
             </div>
           </div>
         </div>
@@ -1200,8 +1308,8 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <div class="section-head">
       <div class="left">
         <span class="eyebrow">Программа тура</span>
-        <h2>Три дня, расписанные так, чтобы&nbsp;не&nbsp;расписывать</h2>
-        <p class="lead">Это не корпоратив с тимбилдингом. Это рамка, внутри которой можно или всё, или ничего&nbsp;— ваш выбор. Программа выше&nbsp;— ориентир, не обязательная программа.</p>
+        <h2>Три дня, которые будешь вспоминать целый год и&nbsp;даже больше</h2>
+        <p class="lead">Пирс, костёр, шатёр, баня. Что-то из&nbsp;этого станет любимым местом, куда будешь возвращаться весь уикэнд.</p>
       </div>
       <div class="right">
         <span class="tag dark"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l3 2"></path></svg> 3 дня / 2 ночи</span>
@@ -1224,7 +1332,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
           <li><time>18:30</time><span>Общий ужин — знакомимся поближе, разговоры на природе</span></li>
           <li><time>20:30</time><span>Настолки, костёр, гитара — или варианты под настроение компании</span></li>
         </ul>
-        <div class="day-foot">«Уже почти не Москва»</div>
+        <div class="day-foot">Жить — в&nbsp;кайф. Попробуем?</div>
       </article>
 
       <article class="day-card d2">
@@ -1307,21 +1415,21 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="jun">
+      <article class="date-card past" data-cat="jun">
         <div class="top">
           <div class="month">Июнь</div>
           <div class="range">27–29 <small>пт–вс</small></div>
-          <div class="corner"><span class="sticker honey" style="padding:5px 10px;font-size:11px">БЛИЖАЙШИЙ</span></div>
+          <div class="corner"><span class="sticker dark" style="padding:5px 10px;font-size:11px">ЗАЕЗД ПРОШЁЛ</span></div>
         </div>
         <div class="body">
           <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
           <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Длинные тёплые вечера, +24°C</div>
           <div class="progress">
             <div class="pbar"><i style="width:75%"></i></div>
-            <div class="ptext"><span>Занято</span><b>18 / 24 · осталось 6 мест</b></div>
+            <div class="ptext"><span>Занято</span><b>Заезд завершён · ждём отзывы</b></div>
           </div>
           <div class="price"><span class="new">19 000</span><span class="cur">₽ с человека</span></div>
-          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать →</a></div>
+          <div class="cta"><button type="button" class="btn btn-primary" disabled>Заезд завершён</button></div>
         </div>
       </article>
 
@@ -1530,17 +1638,18 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 
       <div class="cell beige c-span2 has-photo" style="background-image:url('9.jpeg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14M7 22V10M17 22V10M3 10h18L17 4H7z"></path><path d="M11 14v4M13 14v4"></path></svg></div>
-        <h3>Настоящая русская баня с веничком</h3>
-        <p>Топится каждый вечер. Парение от банщика, веники, чан с травяным чаем и прыжок в реку — всё включено.</p>
+        <h3>Дровяная баня с&nbsp;травяным чаем</h3>
+        <p>Топится каждый вечер на&nbsp;живом огне. Жар, вкус травяного чая и&nbsp;закат над рекой с&nbsp;веранды&nbsp;— этого достаточно, чтобы выдохнуть.</p>
       </div>
 
       <div class="cell bark c-span3 has-photo" style="background-image:url('2.jpg');background-size:cover;background-position:center">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c4-4 18-4 20 0c-2 4-16 4-20 0z"></path><path d="M12 4v16M5 8l14 8M19 8L5 16"></path></svg></div>
         <h3>Сплавы на каяках</h3>
-        <p>Два сплава за тур по тихой реке. Даже если в последний раз гребли в парке Горького — справитесь. Инструктор, жилеты, гермомешки, остановка с кофе на песчаной косе.</p>
+        <p>Два сплава за&nbsp;тур по&nbsp;тихой реке. Даже если в&nbsp;последний раз гребли в&nbsp;парке Горького&nbsp;— справитесь. Инструктор, жилеты, гермомешки и&nbsp;неспешный темп.</p>
         <ul class="bullets">
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Маршрут для любого уровня подготовки</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Сапы, лодки, велики — прокат включён</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Сап-борды бесплатно после сплава</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Велики — за отдельную плату</li>
         </ul>
       </div>
 
@@ -1566,7 +1675,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
           <span class="eyebrow">Гарантии и возврат</span>
           <h2>Мы&nbsp;уверены в&nbsp;туре. Поэтому без&nbsp;рисков для&nbsp;вас.</h2>
           <p class="lead">Покупка тура — это эмоция. И&nbsp;мы&nbsp;понимаем, что планы у&nbsp;всех меняются. Поэтому условия прописаны заранее и&nbsp;честно: всегда знаете, на&nbsp;что соглашаетесь, а&nbsp;возврат работает без&nbsp;вопросов.</p>
-          <div class="bignum">14 дней<small>на полный возврат предоплаты — если планы изменились до этого срока, возвращаем 100% без вопросов</small></div>
+          <div class="bignum">14 дней<small>на&nbsp;полный возврат брони&nbsp;— если планы изменились до&nbsp;этого срока, возвращаем 100% без вопросов</small></div>
         </div>
         <div class="right">
           <div class="hfeat">
@@ -1579,7 +1688,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
           </div>
           <div class="hfeat">
             <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9 6 9-6"></path><rect x="3" y="5" width="18" height="14" rx="2"></rect></svg></div>
-            <div><b>Перенос на другой заезд бесплатно</b><p>Если за неделю до заезда планы поменялись — переносим вашу бронь на любой следующий заезд сезона без доплат.</p></div>
+            <div><b>Перенос на другой заезд бесплатно</b><p>Если за&nbsp;неделю до&nbsp;заезда планы поменялись&nbsp;— переносим вашу бронь на&nbsp;любой следующий заезд сезона без доплат. Один раз за&nbsp;бронирование, после переноса возврат не&nbsp;предусмотрен.</p></div>
           </div>
         </div>
       </div>
@@ -1603,7 +1712,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <div class="about-copy">
         <span class="eyebrow">Кто я</span>
         <h2>Время познакомиться <span class="hand" style="color:#c9a876">поближе</span></h2>
-        <p class="lead">Меня зовут Степан. По образованию географ — путешествия и природа со мной с университета. Был у истоков глэмпинга в Тверской области ещё когда это слово мало кто слышал. За 3 года через мои заезды прошло больше 100 человек — большинство девочек, многие приезжают повторно.</p>
+        <p class="lead">Меня зовут Степан. По образованию географ — путешествия и природа со мной с университета. Был у истоков глэмпинга в Тверской области ещё когда это слово мало кто слышал. За&nbsp;3&nbsp;года через мои заезды прошло больше 500&nbsp;человек&nbsp;— многие приезжают повторно.</p>
         <p class="lead">Делаю всё, чтобы вы вернулись домой с ощущением «это были лучшие выходные за полгода». Подбираю программу под группу, рядом всё время заезда, на связи 24/7. Никакой «школы выживания» — только хорошая компания, тёплая постель и природа.</p>
         <div class="legend">«Не продаю туры. Делюсь местом, которое люблю.»</div>
         <div class="about-stats">
@@ -1631,7 +1740,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <div class="reviews">
       <article class="review feat">
         <div class="stars">★★★★★</div>
-        <p class="text">«Я&nbsp;планировала отлежаться в&nbsp;шатре с&nbsp;книгой, а&nbsp;уехала с&nbsp;тремя новыми друзьями и&nbsp;ощущением, что у&nbsp;меня было <b>полноценное лето за&nbsp;три дня</b>. Баня&nbsp;— отдельная любовь.»</p>
+        <p class="text">«Я&nbsp;ехала «отлежаться в&nbsp;шатре с&nbsp;книгой», а&nbsp;вернулась с&nbsp;тремя новыми друзьями и&nbsp;ощущением, что у&nbsp;меня было полноценное лето за&nbsp;три дня. На&nbsp;второй день поймала себя на&nbsp;том, что не&nbsp;открывала телефон с&nbsp;утра&nbsp;— и&nbsp;не&nbsp;тянет. Баня&nbsp;— отдельная любовь.»</p>
         <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V11l7-6 7 6v10"></path></svg> Заезд 13–15 июня</span>
         <div class="who">
           <div class="ava" style="background:var(--bark)">АП</div>
@@ -1641,27 +1750,27 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 
       <article class="review">
         <div class="stars">★★★★★</div>
-        <p class="text">«Боялся группового формата&nbsp;— оказалось, никто никого ни&nbsp;к&nbsp;чему не&nbsp;принуждает. Хочешь&nbsp;— парься, хочешь&nbsp;— читай в&nbsp;гамаке. <b>Шведский стол отдельный вайб</b>, повар реально классный.»</p>
-        <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v6M14 2v6M6 14h12l-2 6H8z"></path></svg> Заезд 13–15 июня</span>
+        <p class="text">«После трёх ночных смен я&nbsp;был готов спать всю поездку. Проспал только первую ночь, потом включился. Сплав, разговоры с&nbsp;незнакомыми людьми о&nbsp;всякой ерунде, ушат травяного чая у&nbsp;бани. На&nbsp;удивление никто не&nbsp;спрашивал «а&nbsp;вы реально врач, посмотрите вот тут».»</p>
+        <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Заезд 13–15 июня</span>
         <div class="who">
-          <div class="ava" style="background:var(--moss)">КЛ</div>
-          <div class="meta"><b>Кирилл Л.</b><span>разработчик, Санкт-Петербург</span></div>
+          <div class="ava" style="background:var(--moss)">АМ</div>
+          <div class="meta"><b>Артём М.</b><span>врач-анестезиолог, Москва</span></div>
         </div>
       </article>
 
       <article class="review">
         <div class="stars">★★★★★</div>
-        <p class="text">«Байдарки и&nbsp;баня в&nbsp;один день&nbsp;— это всё, что нужно знать. В&nbsp;понедельник вышла на&nbsp;работу так, <b>как будто была в&nbsp;отпуске две недели</b>. Уже забронировала следующий заезд.»</p>
+        <p class="text">«Поехала «выдохнуть после четверти», а&nbsp;вернулась с&nbsp;дневником в&nbsp;ноутбуке&nbsp;— записала за&nbsp;три дня больше, чем за&nbsp;май. Степан не&nbsp;дёргает по&nbsp;расписанию, не&nbsp;строит на&nbsp;зарядку. И&nbsp;это лучшее, что может быть в&nbsp;туре. Сказала мужу&nbsp;— в&nbsp;августе едем вдвоём.»</p>
         <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c4-4 18-4 20 0c-2 4-16 4-20 0z"></path></svg> Заезд 23–25 мая</span>
         <div class="who">
-          <div class="ava" style="background:var(--sky-deep)">МР</div>
-          <div class="meta"><b>Мария Р.</b><span>дизайнер, Москва</span></div>
+          <div class="ava" style="background:var(--sky-deep)">ЛК</div>
+          <div class="meta"><b>Лена К.</b><span>учитель русского, Тверь</span></div>
         </div>
       </article>
 
       <article class="review">
         <div class="stars">★★★★☆</div>
-        <p class="text">«Хороший тур, особенно понравились сплавы и&nbsp;разговоры у&nbsp;костра. Снимаю звезду за&nbsp;комаров — но&nbsp;<b>репеллент в&nbsp;шатре уже лежал</b>, и&nbsp;ребята предупредили заранее. Сама атмосфера&nbsp;— то&nbsp;что нужно после марта.»</p>
+        <p class="text">«Хороший тур, особенно понравились сплавы и&nbsp;разговоры у&nbsp;костра. Снимаю звезду за&nbsp;комаров&nbsp;— но&nbsp;репеллент в&nbsp;шатре уже лежал, и&nbsp;ребята предупредили заранее. Сама атмосфера&nbsp;— то&nbsp;что нужно после мая. На&nbsp;работу вышла в&nbsp;понедельник как отдохнувший человек.»</p>
         <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg> Заезд 30 мая – 1 июня</span>
         <div class="who">
           <div class="ava" style="background:var(--ink)">ОС</div>
@@ -1671,21 +1780,21 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 
       <article class="review">
         <div class="stars">★★★★★</div>
-        <p class="text">«Поехали с&nbsp;девушкой вместо стандартного weekend trip в&nbsp;Европе&nbsp;— оказалось <b>в&nbsp;три раза круче и&nbsp;дешевле</b>. Звёзды над&nbsp;каяками, костёр, тишина. Главное&nbsp;— не&nbsp;было ощущения «организованного» отдыха.»</p>
-        <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14M7 22V10M17 22V10M3 10h18L17 4H7z"></path></svg> Заезд 13–15 июня</span>
+        <p class="text">«Поехал «за&nbsp;компанию» с&nbsp;другом, ожиданий ноль. По&nbsp;факту&nbsp;— сплав по&nbsp;тихой воде, баня вечером, утром каша на&nbsp;костре. Всё понравилось, было круто. Степан не&nbsp;строит из&nbsp;себя «эксперта по&nbsp;outdoor», просто хороший парень с&nbsp;нормальным вайбом. На&nbsp;следующий год позову своих.»</p>
+        <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22h14M7 22V10M17 22V10M3 10h18L17 4H7z"></path></svg> Заезд 30 мая – 1 июня</span>
         <div class="who">
-          <div class="ava" style="background:var(--moss-soft)">ДВ</div>
-          <div class="meta"><b>Дмитрий В.</b><span>аналитик, Москва</span></div>
+          <div class="ava" style="background:var(--moss-soft)">СК</div>
+          <div class="meta"><b>Сергей К.</b><span>тренер, Химки</span></div>
         </div>
       </article>
 
       <article class="review">
         <div class="stars">★★★★★</div>
-        <p class="text">«Ездили компанией из&nbsp;6&nbsp;человек на&nbsp;день рождения подруги. Команда подстроилась под нас: сделали торт, отдельную баню, плей-лист на&nbsp;вечер. <b>Всё было без&nbsp;ощущения, что мы&nbsp;в&nbsp;коммерческом туре</b>. По-домашнему.»</p>
-        <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg> Заезд 30 мая</span>
+        <p class="text">«Брала камеру, думала «поснимаю красивые виды». В&nbsp;итоге сняла людей: как Петя смешно гребёт боком, как девчонки заплетают друг другу косы у&nbsp;костра, как Степан режет арбуз. Лучшие кадры за&nbsp;год&nbsp;— и&nbsp;ни&nbsp;одного постановочного. Атмосфера такая, что хочется быть в&nbsp;ней, а&nbsp;не&nbsp;снимать со&nbsp;стороны.»</p>
+        <span class="prod"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg> Заезд 13–15 июня</span>
         <div class="who">
-          <div class="ava" style="background:var(--honey);color:var(--ink)">НТ</div>
-          <div class="meta"><b>Наталья Т.</b><span>SMM, Ярославль</span></div>
+          <div class="ava" style="background:var(--honey);color:var(--ink)">МС</div>
+          <div class="meta"><b>Маша С.</b><span>фотограф, Москва</span></div>
         </div>
       </article>
     </div>
@@ -1703,7 +1812,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <div class="section-head" style="display:block;text-align:center">
       <span class="eyebrow">ГАЛЕРЕЯ</span>
       <h2 style="margin-top:18px">Так это выглядит вживую</h2>
-      <p class="lead" style="margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto">Фото с прошлых заездов — никаких стоков, только то что есть на самом деле</p>
+      <p class="lead" style="margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto">Фото с&nbsp;наших прошлых заездов</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item"><img src="20.jpg" alt="Сплав на каяках" loading="lazy"></div>
@@ -1711,6 +1820,15 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <div class="gallery-item"><img src="22.jpg" alt="Глэмпинг на берегу" loading="lazy"></div>
       <div class="gallery-item"><img src="23.jpg" alt="Вечер у костра" loading="lazy"></div>
       <div class="gallery-item"><img src="25.jpg" alt="Утро у реки" loading="lazy"></div>
+      <div class="gallery-item"><img src="30.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="31.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="32.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="33.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="34.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="35.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="36.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="37.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="38.jpeg" alt="Фото с заезда" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -1727,14 +1845,14 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       <details class="safety-item">
         <summary>А если я не умею плавать?</summary>
         <div class="safety-content">
-          <p>Всё в порядке — большинство девочек в группах не умеют. Маршрут проложен по тверской Медведице: <strong>максимальная глубина 1,5 метра</strong>, течение медленное, перевернуться на каяке практически невозможно (они устойчивые, как лодки).</p>
+          <p>Всё в порядке — большинство девочек в группах не умеют. Маршрут проложен по Тверце: <strong>максимальная глубина 1,5 метра</strong>, течение медленное, перевернуться на каяке практически невозможно (они устойчивые, как лодки).</p>
           <p>Спасжилет — обязательно у каждого, выдаём перед сплавом. Я плыву рядом и при первой просьбе подгребаю на помощь. За 3 года — ни одного инцидента.</p>
         </div>
       </details>
       <details class="safety-item">
         <summary>Я никогда не сидела в каяке — справлюсь?</summary>
         <div class="safety-content">
-          <p>Справитесь за 5 минут. Перед стартом — короткий инструктаж: как держать весло, как поворачивать, как остановиться. Каяки одно- и двухместные, можно идти с подругой или парнем в паре.</p>
+          <p>Справитесь за 5 минут. Перед стартом — короткий инструктаж: как держать весло, как поворачивать, как остановиться. Каяки двух- и&nbsp;трёхместные, можно идти с&nbsp;подругой, парнем или втроём.</p>
           <p>На сплав отводим 3–4 часа с остановками — никуда не торопимся, можно остановиться попить чай, перекусить, сфоткаться.</p>
         </div>
       </details>
@@ -1746,16 +1864,16 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </details>
       <details class="safety-item">
-        <summary>Что если я устану или передумаю плыть?</summary>
+        <summary>Что если я устану грести?</summary>
         <div class="safety-content">
-          <p>Не вопрос. Маршрут разбит на участки — на любом из них можно сойти на берег, и я довезу до лагеря на машине. Никаких «ну давайте дотерпим до конца» — это ваш отдых.</p>
-          <p>Если изначально не уверены — можно вообще пропустить сплав и провести день в глэмпинге: шведский стол, баня, шезлонг, книжка.</p>
+          <p>Можно просто отдыхать. В&nbsp;трёхместной каяке гребут двое&nbsp;— третий сидит и&nbsp;смотрит на&nbsp;воду. В&nbsp;двухместной&nbsp;— меняетесь с&nbsp;соседом, когда устанете. Никаких «давайте дотерпим до&nbsp;конца», темп задаёте сами.</p>
+          <p>Если изначально не&nbsp;хочется на&nbsp;воду&nbsp;— можно вообще пропустить сплав и&nbsp;провести день в&nbsp;глэмпинге: шведский стол, баня, шезлонг, книжка.</p>
         </div>
       </details>
       <details class="safety-item">
         <summary>Что взять с собой?</summary>
         <div class="safety-content">
-          <p>Минимум — удобная одежда, купальник, кроссовки или сандалии которые не жалко намочить, солнцезащитный крем, средство от комаров. Полотенце, постель, посуду — даём всё мы.</p>
+          <p>Минимум — удобная одежда, купальник, кроссовки или сандалии которые не жалко намочить, солнцезащитный крем, средство от комаров. Постель и&nbsp;посуду даём мы. Полотенце лучше взять своё.</p>
           <p>За день до выезда я пришлю в Telegram подробный чек-лист.</p>
         </div>
       </details>
@@ -1904,8 +2022,8 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         <a href="#order" class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center">Забронировать заезд →</a>
       </div>
       <div class="contacts-photo-wrap">
-        <img src="16.jpeg" alt="Глэмпинг · Тверская область, река Медведица" class="contacts-photo" loading="lazy">
-        <div class="contacts-photo-caption">Глэмпинг · Тверская обл., р. Медведица</div>
+        <img src="16.jpeg" alt="Глэмпинг · Тверская область, река Тверца" class="contacts-photo" loading="lazy">
+        <div class="contacts-photo-caption">Глэмпинг · Тверская обл., р. Тверца</div>
       </div>
     </div>
   </div>
@@ -2051,12 +2169,81 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 </div>
 
 <script>
-/* ────── COUNTDOWN ────── */
+/* ────── COUNTDOWN: ближайший будущий заезд ────── */
 (function(){
-  function pad(n){return String(n).padStart(2,'0')}
-  function tickAll(){
+  // Заезды сезона. Заведено вручную — синхронизировать с карточками #dates.
+  // iso — дата и время старта (16:30 — сбор у ж/д Тверь)
+  // label — короткая подпись для текстовых меток
+  var tours = [
+    { iso: '2026-07-03T16:30:00', label: '3–5 июля' },
+    { iso: '2026-07-11T16:30:00', label: '11–13 июля' },
+    { iso: '2026-07-17T16:30:00', label: '17–19 июля' },
+    { iso: '2026-07-25T16:30:00', label: '25–27 июля' },
+    { iso: '2026-07-31T16:30:00', label: '31 июля – 2 августа' },
+    { iso: '2026-08-08T16:30:00', label: '8–10 августа' },
+    { iso: '2026-08-14T16:30:00', label: '14–16 августа' },
+    { iso: '2026-08-22T16:30:00', label: '22–24 августа' },
+    { iso: '2026-08-28T16:30:00', label: '28–30 августа' }
+  ];
+
+  function getNextTour(){
+    var now = Date.now();
+    for (var i = 0; i < tours.length; i++) {
+      if (new Date(tours[i].iso).getTime() > now) return tours[i];
+    }
+    return null;
+  }
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  var current = getNextTour();
+
+  // Синхронизируем текстовые метки «Ближайший заезд ...»
+  function updateLabels(){
+    var label = current ? current.label : 'сезон завершён';
+    var prefix1 = 'Ближайший заезд ';
+    var prefix2 = 'Ближайший заезд · ';
+
+    document.querySelectorAll('.eyebrow').forEach(function(el){
+      if (el.textContent.indexOf('Ближайший заезд') === 0) {
+        el.textContent = prefix1 + label;
+      }
+    });
+
+    document.querySelectorAll('.corner').forEach(function(el){
+      // внутри corner есть <i></i> + текст — заменим только текстовую часть
+      var i = el.querySelector('i');
+      el.innerHTML = '';
+      if (i) el.appendChild(i);
+      el.appendChild(document.createTextNode(' ' + prefix2 + label));
+    });
+  }
+
+  // Проставляем data-countdown на все таймеры
+  function updateTargets(){
     document.querySelectorAll('[data-countdown]').forEach(function(el){
-      var target = new Date(el.getAttribute('data-countdown')).getTime();
+      el.setAttribute('data-countdown', current ? current.iso : '');
+    });
+  }
+
+  function tickAll(){
+    // Если текущий заезд уже наступил — переключаемся на следующий
+    if (current && new Date(current.iso).getTime() <= Date.now()) {
+      current = getNextTour();
+      updateLabels();
+      updateTargets();
+    }
+
+    document.querySelectorAll('[data-countdown]').forEach(function(el){
+      var iso = el.getAttribute('data-countdown');
+      if (!iso) {
+        ['d','h','m','s'].forEach(function(k){
+          var u = el.querySelector('[data-cd="'+k+'"]');
+          if (u) u.textContent = (k === 'd' ? '0' : '00');
+        });
+        return;
+      }
+      var target = new Date(iso).getTime();
       var diff = Math.max(0, target - Date.now());
       var d = Math.floor(diff/86400000);
       var h = Math.floor((diff%86400000)/3600000);
@@ -2065,27 +2252,50 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       ['d','h','m','s'].forEach(function(k,i){
         var v = [d,h,m,s][i];
         var u = el.querySelector('[data-cd="'+k+'"]');
-        if(u) u.textContent = (k==='d' ? v : pad(v));
+        if (u) u.textContent = (k === 'd' ? v : pad(v));
       });
     });
   }
-  tickAll(); setInterval(tickAll, 1000);
 
-  /* Hero timer */
-  function tickHero(){
-    var deadline = new Date(2026, 5, 27, 16, 30, 0);
-    var diff = Math.max(0, deadline - Date.now());
-    var d = Math.floor(diff/86400000);
-    var h = Math.floor((diff%86400000)/3600000);
-    var m = Math.floor((diff%3600000)/60000);
-    var s = Math.floor((diff%60000)/1000);
-    var ids = {'ht-days':d,'ht-hours':h,'ht-mins':m,'ht-secs':s};
-    Object.keys(ids).forEach(function(id){
-      var el = document.getElementById(id);
-      if(el) el.textContent = pad(ids[id]);
-    });
+  updateLabels();
+  updateTargets();
+  tickAll();
+  setInterval(tickAll, 1000);
+})();
+
+/* ────── PRELOADER ────── */
+(function(){
+  var pl = document.getElementById('preloader');
+  if (!pl) return;
+
+  // Не показывать второй раз в этой же сессии
+  if (sessionStorage.getItem('preloader_shown') === '1') {
+    pl.classList.add('hidden');
+    setTimeout(function(){ pl.remove(); }, 100);
+    return;
   }
-  tickHero(); setInterval(tickHero, 1000);
+
+  function hidePreloader(){
+    sessionStorage.setItem('preloader_shown', '1');
+    pl.classList.add('hidden');
+    setTimeout(function(){ pl.remove(); }, 600);
+  }
+
+  // Минимум 1.2 сек, максимум 3 сек
+  var minTime = 1200;
+  var maxTime = 3000;
+  var start = Date.now();
+
+  window.addEventListener('load', function(){
+    var elapsed = Date.now() - start;
+    var wait = Math.max(0, minTime - elapsed);
+    setTimeout(hidePreloader, wait);
+  });
+
+  // Страховка: если load не сработал за 3 сек — скрываем принудительно
+  setTimeout(function(){
+    if (!pl.classList.contains('hidden')) hidePreloader();
+  }, maxTime);
 })();
 
 /* ────── QUIZ ────── */
