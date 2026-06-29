@@ -2385,7 +2385,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         method:'POST', mode:'no-cors',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(quizData)
-      }).then(function(){ console.log('Квиз: заявка отправлена успешно'); showQuizDone(); })
+      }).then(function(){ console.log('Квиз: заявка отправлена успешно'); if(typeof ym!=='undefined')ym(110066709,'reachGoal','form_submit'); showQuizDone(); })
         .catch(function(err){ console.error('Квиз: ошибка отправки:', err); showQuizDone(); });
       function showQuizDone(){
         steps.forEach(function(s){ s.classList.remove('active'); });
@@ -2454,7 +2454,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
       method:'POST', mode:'no-cors',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify(leadData)
-    }).then(function(){ console.log('Форма: заявка отправлена успешно'); showDone(); })
+    }).then(function(){ console.log('Форма: заявка отправлена успешно'); if(typeof ym!=='undefined')ym(110066709,'reachGoal','form_submit'); showDone(); })
       .catch(function(err){ console.error('Форма: ошибка отправки:', err); showDone(); });
     function showDone(){
       form.style.display = 'none';
