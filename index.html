@@ -309,7 +309,9 @@ section.loose{padding:104px 0}
   position:fixed;top:0;left:0;right:0;z-index:99;
   background:var(--ink);color:rgba(248,243,232,.8);
   font-size:12.5px;letter-spacing:.005em;
+  transition:transform .3s ease;
 }
+.promo.hidden{transform:translateY(-100%)}
 .promo .wrap{display:flex;align-items:center;gap:24px;padding-top:10px;padding-bottom:10px}
 .promo .geo{display:inline-flex;gap:6px;align-items:center;color:#fff;font-weight:500}
 .promo .geo svg{color:var(--honey)}
@@ -327,9 +329,9 @@ section.loose{padding:104px 0}
   backdrop-filter:saturate(140%) blur(12px);
   -webkit-backdrop-filter:saturate(140%) blur(12px);
   border-bottom:1px solid var(--line-2);
-  transition:box-shadow .3s ease;
+  transition:box-shadow .3s ease,top .3s ease;
 }
-.nav.scrolled{box-shadow:0 2px 16px rgba(27,42,54,.08)}
+.nav.scrolled{top:0;box-shadow:0 2px 16px rgba(27,42,54,.08)}
 /* компенсация фиксированных promo + nav */
 body{padding-top:112px}
 html{scroll-padding-top:130px}
@@ -2530,9 +2532,15 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 })();
 window.addEventListener('scroll',function(){
   var header=document.querySelector('.nav');
+  var promo=document.querySelector('.promo');
   if(!header)return;
-  if(window.scrollY>20)header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
+  if(window.scrollY>20){
+    header.classList.add('scrolled');
+    if(promo)promo.classList.add('hidden');
+  }else{
+    header.classList.remove('scrolled');
+    if(promo)promo.classList.remove('hidden');
+  }
 });
 </script>
 
