@@ -604,6 +604,18 @@ footer .logo{height:48px}
 .price-note b{font-family:var(--fdisp);font-weight:600;font-size:17px;display:block;margin-bottom:5px}
 .price-note p{font-size:14.5px;color:var(--ink-2);line-height:1.55;max-width:880px}
 
+/* ============ CABIN UPGRADE (А-фрейм) ============ */
+.cabin-sec{background:var(--beige)}
+.cabin-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0}
+.cabin-gallery img{width:100%;height:260px;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow-md);display:block}
+.cabin-amenities{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 24px;margin:0 0 48px}
+.cabin-amenity{display:flex;align-items:center;gap:14px}
+.cabin-amenity .ic{width:46px;height:46px;border-radius:12px;background:#fff;display:grid;place-items:center;color:var(--moss);flex:0 0 46px;box-shadow:var(--shadow-sm)}
+.cabin-amenity span{font-size:14.5px;font-weight:500;color:var(--ink-2)}
+@media(max-width:980px){.cabin-amenities{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.cabin-gallery{grid-template-columns:repeat(2,1fr);gap:10px}.cabin-gallery img{height:180px}}
+@media(max-width:480px){.cabin-amenities{grid-template-columns:1fr 1fr}}
+
 /* ============ BENTO ============ */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(190px,auto);gap:16px}
 .cell{background:var(--white);border-radius:var(--r-lg);padding:30px;border:1px solid var(--line-2);position:relative;overflow:hidden;display:flex;flex-direction:column}
@@ -1069,6 +1081,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <nav class="nav-links">
       <a href="#program" class="hot">Программа</a>
       <a href="#dates">Расписание</a>
+      <a href="#cabins">Домики</a>
       <a href="#why">Что входит</a>
       <a href="#reviews">Отзывы</a>
       <a href="#gallery">Галерея</a>
@@ -1399,7 +1412,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 
     <div class="dategrid" data-grid>
 
-      <article class="date-card soldout" data-cat="jun">
+      <article class="date-card soldout" data-cat="jun" data-end="2026-06-15">
         <div class="top">
           <div class="month">Июнь</div>
           <div class="range">13–15 <small>пт–вс</small></div>
@@ -1417,7 +1430,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card past" data-cat="jun">
+      <article class="date-card past" data-cat="jun" data-end="2026-06-29">
         <div class="top">
           <div class="month">Июнь</div>
           <div class="range">27–29 <small>пт–вс</small></div>
@@ -1435,7 +1448,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card past" data-cat="jul">
+      <article class="date-card past" data-cat="jul" data-end="2026-07-05">
         <div class="top">
           <div class="month">Июль</div>
           <div class="range">3–5 <small>пт–вс</small></div>
@@ -1453,7 +1466,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="jul">
+      <article class="date-card" data-cat="jul" data-end="2026-07-12">
         <div class="top">
           <div class="month">Июль</div>
           <div class="range">10–12 <small>пт–вс</small></div>
@@ -1471,7 +1484,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="jul">
+      <article class="date-card" data-cat="jul" data-end="2026-07-22">
         <div class="top">
           <div class="month">Июль</div>
           <div class="range">20–22 <small>пт–вс</small></div>
@@ -1489,7 +1502,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="aug">
+      <article class="date-card" data-cat="aug" data-end="2026-08-19">
         <div class="top">
           <div class="month">Август</div>
           <div class="range">17–19 <small>пн–ср</small></div>
@@ -1507,7 +1520,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="sep">
+      <article class="date-card" data-cat="sep" data-end="2026-09-06">
         <div class="top">
           <div class="month">Сентябрь</div>
           <div class="range">4–6 <small>пт–вс</small></div>
@@ -1525,7 +1538,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="sep">
+      <article class="date-card" data-cat="sep" data-end="2026-09-13">
         <div class="top">
           <div class="month">Сентябрь</div>
           <div class="range">11–13 <small>пт–вс</small></div>
@@ -1543,7 +1556,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="sep">
+      <article class="date-card" data-cat="sep" data-end="2026-09-20">
         <div class="top">
           <div class="month">Сентябрь</div>
           <div class="range">18–20 <small>пт–вс</small></div>
@@ -1561,7 +1574,7 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         </div>
       </article>
 
-      <article class="date-card" data-cat="sep">
+      <article class="date-card" data-cat="sep" data-end="2026-09-27">
         <div class="top">
           <div class="month">Сентябрь</div>
           <div class="range">25–27 <small>пт–вс</small></div>
@@ -1588,6 +1601,163 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
         <p>Цена за весь пакет на 3 дня: проживание в шатре, шведский стол 3 раза в день, сплав на каяках, трансфер от ж/д Тверь и обратно, посиделки у костра, кино под звёздами. Никаких скрытых доплат.</p>
         <p style="font-size:12px;color:var(--mute);margin-top:8px;line-height:1.5">До Твери из Москвы добираетесь самостоятельно — электричка из Ленинградского вокзала, около 1,5 часа. Цена не включает страховку и личные расходы. Предоплата 30%, остаток в день заезда. Возврат 100% при отмене за 14 дней.</p>
         <p style="font-size:12px;color:var(--mute);margin-top:6px;line-height:1.5">Услуги доступны лицам старше 18 лет. Несовершеннолетние участвуют в сопровождении законных представителей. Сплав и баня — на свой риск, инструктаж проводится на месте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cabin-sec loose" id="cabins" data-screen-label="А-фрейм домики">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow">Апгрейд проживания</span>
+        <h2>Хочется с ванной и телевизором? Живите в А-фрейм домике</h2>
+        <p class="lead">Тот же тур, та же программа, тот же шведский стол, сплавы, баня, костёр — но ночуете не в шатре, а в отдельном деревянном А-фрейме на нашей территории.</p>
+      </div>
+    </div>
+
+    <div class="cabin-gallery">
+      <img src="cabin-1.jpg" alt="А-фрейм домик снаружи" loading="lazy">
+      <img src="cabin-2.jpg" alt="А-фрейм домик — интерьер" loading="lazy">
+      <img src="cabin-3.jpg" alt="А-фрейм домик — интерьер" loading="lazy">
+      <img src="cabin-4.jpg" alt="А-фрейм домик — интерьер" loading="lazy">
+      <img src="cabin-5.jpg" alt="А-фрейм домик — интерьер" loading="lazy">
+      <img src="cabin-6.jpg" alt="А-фрейм домик — интерьер" loading="lazy">
+    </div>
+
+    <h3 style="margin-bottom:20px">Что внутри</h3>
+    <div class="cabin-amenities">
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c2 3 4 5.5 4 8.5a4 4 0 0 1-8 0C8 7.5 10 5 12 2z"></path><path d="M6 14c1 1.5 2 2.7 2 4.3A2.3 2.3 0 0 1 5.4 20 2.3 2.3 0 0 1 3 18.3C3 16.7 5 15 6 14z"></path></svg></span><span>Горячая вода</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6V4a2 2 0 0 1 4 0v2"></path><path d="M3 10h18v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"></path><path d="M3 10V8a2 2 0 0 1 2-2h1"></path></svg></span><span>Собственная ванная комната</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 18v3"></path></svg></span><span>Телевизор</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a11 11 0 0 1 14 0"></path><path d="M8.5 16a6 6 0 0 1 7 0"></path><path d="M12 19.5h.01"></path></svg></span><span>Wi-Fi</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-6 9 6"></path><path d="M5 9v11h14V9"></path><path d="M9 20v-6h6v6"></path></svg></span><span>Веранда</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M5 9h14"></path><path d="M8 5.5h.01M8 12.5h.01"></path></svg></span><span>Холодильник</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v5"></path><path d="M3 18h18"></path><path d="M5 10V7a2 2 0 0 1 2-2h3v5"></path></svg></span><span>Двуспальная кровать + диван</span></div>
+      <div class="cabin-amenity"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"></circle><circle cx="17" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M10 21a7 7 0 0 1 14 0"></path></svg></span><span>До 4 спальных мест</span></div>
+    </div>
+
+    <div class="dategrid">
+
+      <article class="date-card" data-cat="aug" data-end="2026-08-09">
+        <div class="top">
+          <div class="month">Август</div>
+          <div class="range">7–9 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Разгар лета — самая тёплая вода в сезоне</div>
+          <div class="price"><span class="new">26 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="aug" data-end="2026-08-16">
+        <div class="top">
+          <div class="month">Август</div>
+          <div class="range">14–16 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Тёплые вечера, звёздное небо над рекой</div>
+          <div class="price"><span class="new">26 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="aug" data-end="2026-08-23">
+        <div class="top">
+          <div class="month">Август</div>
+          <div class="range">21–23 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Последние тёплые выходные августа</div>
+          <div class="price"><span class="new">26 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="aug" data-end="2026-08-30">
+        <div class="top">
+          <div class="month">Август</div>
+          <div class="range">28–30 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Проводы лета — первое золото на деревьях</div>
+          <div class="price"><span class="new">26 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="sep" data-end="2026-09-06">
+        <div class="top">
+          <div class="month">Сентябрь</div>
+          <div class="range">4–6 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Начало бархатного сезона — первые краски осени</div>
+          <div class="price"><span class="new">21 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="sep" data-end="2026-09-13">
+        <div class="top">
+          <div class="month">Сентябрь</div>
+          <div class="range">11–13 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Золото берёз над рекой — лучшее время для фото</div>
+          <div class="price"><span class="new">21 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="sep" data-end="2026-09-20">
+        <div class="top">
+          <div class="month">Сентябрь</div>
+          <div class="range">18–20 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Бабье лето — тепло, тихо и красиво</div>
+          <div class="price"><span class="new">21 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+      <article class="date-card" data-cat="sep" data-end="2026-09-27">
+        <div class="top">
+          <div class="month">Сентябрь</div>
+          <div class="range">25–27 <small>пт–вс</small></div>
+          <div class="corner"><span class="sticker sage" style="padding:5px 10px;font-size:11px">ОТКРЫТ</span></div>
+        </div>
+        <div class="body">
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Старт в 16:30 от ж/д Тверь</div>
+          <div class="row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg> Закрываем сезон — последний заезд 2026</div>
+          <div class="price"><span class="new">21 000</span><span class="cur">₽ с человека</span></div>
+          <div class="cta"><a href="#order" class="btn btn-primary">Забронировать домик →</a></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="price-note">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v4h1"></path></svg></div>
+      <div>
+        <b>Проживание в домике — что нужно знать</b>
+        <p>Заселение в домик — от 2 человек. Программа тура та же, что и в основном пакете за 17 000 ₽: шведский стол 3 раза в день, сплав на каяках, баня, трансфер от ж/д Тверь. Отличается только формат проживания.</p>
       </div>
     </div>
   </div>
@@ -1801,16 +1971,21 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <div class="gallery-grid">
       <div class="gallery-item"><img src="20.jpg" alt="Сплав на каяках" loading="lazy"></div>
       <div class="gallery-item"><img src="21.jpeg" alt="Группа на природе" loading="lazy"></div>
+      <div class="gallery-item"><img src="cabin-1.jpg" alt="А-фрейм снаружи" loading="lazy"></div>
       <div class="gallery-item"><img src="22.jpg" alt="Глэмпинг на берегу" loading="lazy"></div>
       <div class="gallery-item"><img src="23.jpg" alt="Вечер у костра" loading="lazy"></div>
+      <div class="gallery-item"><img src="cabin-4.jpg" alt="Спальня в домике" loading="lazy"></div>
       <div class="gallery-item"><img src="25.jpg" alt="Утро у реки" loading="lazy"></div>
       <div class="gallery-item"><img src="30.jpeg" alt="Фото с заезда" loading="lazy"></div>
       <div class="gallery-item"><img src="31.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="cabin-6.jpg" alt="Интерьер А-фрейм домика" loading="lazy"></div>
       <div class="gallery-item"><img src="32.jpeg" alt="Фото с заезда" loading="lazy"></div>
       <div class="gallery-item"><img src="33.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="cabin-5.jpg" alt="Вид из домика на природу" loading="lazy"></div>
       <div class="gallery-item"><img src="34.jpeg" alt="Фото с заезда" loading="lazy"></div>
       <div class="gallery-item"><img src="35.jpeg" alt="Фото с заезда" loading="lazy"></div>
       <div class="gallery-item"><img src="36.jpeg" alt="Фото с заезда" loading="lazy"></div>
+      <div class="gallery-item"><img src="cabin-2.jpg" alt="Веранда домика" loading="lazy"></div>
       <div class="gallery-item"><img src="37.jpeg" alt="Фото с заезда" loading="lazy"></div>
       <div class="gallery-item"><img src="38.jpeg" alt="Фото с заезда" loading="lazy"></div>
 <div class="gallery-item"><img src="43.jpg" alt="Фото с заезда" loading="lazy"></div>
@@ -1914,13 +2089,13 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
             <div class="field">
               <label>Дата заезда</label>
               <select name="date">
-                <option>10–12 июля · свободно</option>
-                <option>20–22 июля · свободно</option>
-                <option>17–19 августа · свободно</option>
-                <option>4–6 сентября · свободно</option>
-                <option>11–13 сентября · свободно</option>
-                <option>18–20 сентября · свободно</option>
-                <option>25–27 сентября · свободно</option>
+                <option data-end="2026-07-12">10–12 июля · свободно</option>
+                <option data-end="2026-07-22">20–22 июля · свободно</option>
+                <option data-end="2026-08-19">17–19 августа · свободно</option>
+                <option data-end="2026-09-06">4–6 сентября · свободно</option>
+                <option data-end="2026-09-13">11–13 сентября · свободно</option>
+                <option data-end="2026-09-20">18–20 сентября · свободно</option>
+                <option data-end="2026-09-27">25–27 сентября · свободно</option>
                 <option>Пока не выбрал(а) — посоветуйте</option>
               </select>
             </div>
@@ -2153,18 +2328,26 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 <script>
 /* ────── COUNTDOWN: ближайший будущий заезд ────── */
 (function(){
-  // Заезды сезона. Заведено вручную — синхронизировать с карточками #dates.
-  // iso — дата и время старта (16:30 — сбор у ж/д Тверь)
-  // label — короткая подпись для текстовых меток
-  var tours = [
-    { iso: '2026-07-10T16:30:00', label: '10–12 июля' },
-    { iso: '2026-07-20T16:30:00', label: '20–22 июля' },
-    { iso: '2026-08-17T16:30:00', label: '17–19 августа' },
-    { iso: '2026-09-04T16:30:00', label: '4–6 сентября' },
-    { iso: '2026-09-11T16:30:00', label: '11–13 сентября' },
-    { iso: '2026-09-18T16:30:00', label: '18–20 сентября' },
-    { iso: '2026-09-25T16:30:00', label: '25–27 сентября' }
-  ];
+  // Заезды сезона берутся динамически из карточек #dates (data-end на .date-card).
+  // iso — дата и время старта (16:30 — сбор у ж/д Тверь), день старта берём из текста .range
+  function buildTours(){
+    var cards = document.querySelectorAll('#dates .dategrid[data-grid] > .date-card[data-end]');
+    var tours = [];
+    cards.forEach(function(card){
+      var end = card.dataset.end; // YYYY-MM-DD
+      var rangeEl = card.querySelector('.range');
+      if(!end || !rangeEl) return;
+      var startDay = parseInt(rangeEl.textContent.trim().split('–')[0], 10);
+      if(isNaN(startDay)) return;
+      var parts = end.split('-');
+      var iso = parts[0] + '-' + parts[1] + '-' + String(startDay).padStart(2,'0') + 'T16:30:00';
+      tours.push({ iso: iso });
+    });
+    tours.sort(function(a,b){ return new Date(a.iso) - new Date(b.iso); });
+    return tours;
+  }
+
+  var tours = buildTours();
 
   function getNextTour(){
     var now = Date.now();
@@ -2522,5 +2705,62 @@ window.addEventListener('scroll',function(){
     </div>
   </div>
 </div>
+
+<script>
+/* ────── АВТО-СТАТУС ЗАЕЗДОВ ПО ДАТЕ ────── */
+(function(){
+  var today = new Date();
+  today.setHours(0,0,0,0);
+
+  var cards = document.querySelectorAll('.date-card[data-end]');
+  cards.forEach(function(card){
+    var end = new Date(card.dataset.end + 'T00:00:00');
+    if(isNaN(end.getTime())) return;
+    if(card.classList.contains('soldout')) return;
+    if(end >= today) return;
+    if(!card.classList.contains('past')){
+      card.classList.add('past');
+    }
+
+    var corner = card.querySelector('.corner');
+    if(corner) corner.innerHTML = '<span class="sticker dark" style="padding:5px 10px;font-size:11px">ЗАЕЗД ПРОШЁЛ</span>';
+
+    var cta = card.querySelector('.cta');
+    if(cta) cta.innerHTML = '<button type="button" class="btn btn-primary" disabled>Заезд завершён</button>';
+
+    var ptext = card.querySelector('.ptext');
+    if(ptext) ptext.innerHTML = '<span>Занято</span><b>Заезд завершён</b>';
+  });
+
+  document.querySelectorAll('.dategrid').forEach(function(grid){
+    var items = Array.prototype.slice.call(grid.querySelectorAll(':scope > .date-card[data-end]'));
+    items.sort(function(a, b){
+      var aPast = a.classList.contains('past') || a.classList.contains('soldout');
+      var bPast = b.classList.contains('past') || b.classList.contains('soldout');
+      if(aPast !== bPast) return aPast ? 1 : -1;
+      return a.dataset.end.localeCompare(b.dataset.end);
+    });
+    items.forEach(function(item){ grid.appendChild(item); });
+  });
+
+  // Чистим прошедшие даты из select'ов формы (data-end на <option>)
+  document.querySelectorAll('select').forEach(function(select){
+    var options = Array.prototype.slice.call(select.querySelectorAll('option[data-end]'));
+    if(!options.length) return;
+    var hadSelectedRemoved = false;
+    options.forEach(function(opt){
+      var end = new Date(opt.dataset.end + 'T00:00:00');
+      if(isNaN(end.getTime())) return;
+      if(end < today){
+        if(opt.selected) hadSelectedRemoved = true;
+        opt.remove();
+      }
+    });
+    if(hadSelectedRemoved && select.options.length){
+      select.selectedIndex = 0;
+    }
+  });
+})();
+</script>
 
 </body></html>
