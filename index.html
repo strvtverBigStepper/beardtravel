@@ -1082,6 +1082,13 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
   .ow-snow{display:none!important}
   .ow .smoke circle{opacity:.6}
 }
+
+/* ===== Плавные анимации (скрипт «MOTION» внизу страницы) =====
+   Без JS и при «уменьшении движения» всё видно сразу. */
+html.lenis-on{scroll-behavior:auto}
+html.lenis-on.lenis-stopped{overflow:hidden}
+.motion-on .banner-photo{overflow:hidden;border-radius:24px;padding:0;width:calc(100% - 32px)}
+.motion-on .banner-photo img{will-change:transform}
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -2993,5 +3000,61 @@ window.addEventListener('scroll',function(){
     }, true);
   }
 })();
+</script>
+
+<!-- ============ MOTION: плавный скролл + появление блоков (как на stpn-сайте) ============ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
+<script>
+// Если библиотеки не загрузились — страница просто остаётся статичной (всё видно).
+window.addEventListener('DOMContentLoaded', function(){
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var touch = matchMedia('(hover: none), (pointer: coarse)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.SplitText) gsap.registerPlugin(SplitText);
+  document.documentElement.classList.add('motion-on');
+
+  // Не трогаем зимний hero, обычный hero и всё, что скрыто (межсезонье, модалки, cookies)
+  function ok(el){ return el.offsetParent !== null && !el.closest('.hero, .cookies-banner, .modal, form'); }
+
+  // 1. Плавный скролл — только мышь/тачпад; якоря с отступом под шапку
+  if (window.Lenis && !touch){
+    var lenis = new Lenis({ lerp: 0.1, anchors: { offset: -96 } });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.documentElement.classList.add('lenis-on');
+  }
+
+  // 2. Заголовки разделов: строки выезжают из-под маски (после загрузки шрифтов)
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
+    if (window.SplitText){
+      [].filter.call(document.querySelectorAll('section h2'), ok).forEach(function(h){
+        SplitText.create(h, { type:'lines', mask:'lines', autoSplit:true,
+          onSplit: function(self){ return gsap.from(self.lines, { yPercent:110, duration:.9, ease:'power3.out', stagger:.08,
+            scrollTrigger:{ trigger:h, start:'top 88%', once:true } }); } });
+      });
+    }
+    ScrollTrigger.refresh();
+  });
+
+  // 3. Карточки, фото, галерея: мягкое появление снизу, по очереди, один раз
+  var items = [].filter.call(document.querySelectorAll(
+    '.trust-item, .day-card, .cabin-gallery img, .cabin-amenity, .cell, .review, .gallery-item, .qitem, .contact-row, .banner-photo'), ok);
+  gsap.set(items, { opacity:0, y:28 });
+  ScrollTrigger.batch(items, { start:'top 90%', once:true,
+    onEnter: function(b){ gsap.to(b, { opacity:1, y:0, duration:.8, ease:'power3.out', stagger:.08, clearProps:'transform,opacity' }); } });
+
+  // 4. Лёгкий параллакс на широких фото-баннерах
+  document.querySelectorAll('.banner-photo img').forEach(function(img){
+    gsap.fromTo(img, { yPercent:-6, scale:1.14 }, { yPercent:6, scale:1.14, ease:'none',
+      scrollTrigger:{ trigger:img.parentElement, start:'top bottom', end:'bottom top', scrub:true } });
+  });
+
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+});
 </script>
 </body></html>
