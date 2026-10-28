@@ -1013,6 +1013,9 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
 .off-season #quiz,.off-season #dates,.off-season #cabins .dategrid,.off-season #order .deadline,
 .off-season .hero .badge-row .tag.sky,
 .off-season .os-hide{display:none!important}
+.os-only{display:none}
+.off-season .os-only{display:block}
+.off-season .summer-only,.off-season #order .perks{display:none}
 .off-season form.leadform .field:has(select[name="date"]){display:none}
 /* ============ МЕЖСЕЗОНЬЕ: зимний hero «Зимовка» (вариант A) ============
    Виден только при OFF_SEASON = true; обычный hero (.hero .grid) прячется, но не удалён. */
@@ -2219,8 +2222,12 @@ footer .legal{display:flex;justify-content:space-between;align-items:center;colo
     <div class="form-sec">
       <div class="grid">
         <div class="left">
-          <h2>Оставьте контакт&nbsp;— и&nbsp;отключите телефон до&nbsp;понедельника</h2>
-          <p class="lead">Координатор перезвонит в&nbsp;течение 15&nbsp;минут, расскажет про заезд и&nbsp;закрепит место. Предоплата&nbsp;— 30%, остаток в&nbsp;день заезда. Если планы изменятся за&nbsp;14&nbsp;дней&nbsp;— вернём всё.</p>
+          <!-- МЕЖСЕЗОНЬЕ: заголовок и текст над формой (видны только при OFF_SEASON = true) -->
+          <h2 class="os-only">Хотите узнать о&nbsp;старте первыми?</h2>
+          <p class="lead os-only">Подпишитесь на&nbsp;канал&nbsp;— напишем, как только откроем даты сезона-2027.</p>
+          <!-- Летний текст (возвращается при OFF_SEASON = false) -->
+          <h2 class="summer-only">Оставьте контакт&nbsp;— и&nbsp;отключите телефон до&nbsp;понедельника</h2>
+          <p class="lead summer-only">Координатор перезвонит в&nbsp;течение 15&nbsp;минут, расскажет про заезд и&nbsp;закрепит место. Предоплата&nbsp;— 30%, остаток в&nbsp;день заезда. Если планы изменятся за&nbsp;14&nbsp;дней&nbsp;— вернём всё.</p>
           <div class="deadline">
             <div class="countdown" data-countdown="2026-06-27T16:30:00">
               <span class="cd-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l3 2"></path></svg> До старта ближайшего заезда:</span>
